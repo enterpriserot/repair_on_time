@@ -39,6 +39,10 @@ define('VIEW_PATH_INC',SITE_ROOT.'view/inc/');
 define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/templates_error/');
 //IMG LOGO ////AÑADIDO
 define('IMG_LOGO',SITE_ROOT.'view/img/logo_rot.png');
+
+//LIBS
+define('LIBS',SITE_ROOT . 'libs/');
+
 //MODULES
 define('MODULES_PATH',SITE_ROOT.'modules/');
 
@@ -74,3 +78,10 @@ define('CONTACT_CSS_PATH', SITE_PATH . 'modules/contact/view/css/');
 define('CONTACT_LIB_PATH', SITE_PATH . 'modules/contact/view/lib/');
 define('CONTACT_IMG_PATH', SITE_PATH . 'modules/contact/view/img/');
 define('CONTACT_VIEW_PATH', 'modules/contact/view/');
+
+//MODULE TECHNICIANS
+define('TECHNICIANS_JS_PATH',SITE_PATH. 'modules/technicians/view/js/');
+define('TECHNICIANS_CSS_PATH', SITE_PATH . 'modules/technicians/view/css/');
+define('BLL_TECHNICIANS',SITE_ROOT.'modules/technicians/model/BLL/');
+define('DAO_TECHNICIANS',SITE_ROOT.'modules/technicians/model/DAO/');
+define('MODEL_TECHNICIANS', SITE_ROOT . 'modules/technicians/model/model/');

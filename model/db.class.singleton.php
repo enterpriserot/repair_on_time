@@ -39,6 +39,8 @@
 
         private function conectar() {
             $this->link = new mysqli($this->server, $this->user, $this->password);
+            //http://es.stackoverflow.com/questions/15953/problema-con-caracteres-%C3%B1-y-acentos-gerando-json-php
+            mysqli_set_charset($this->link,"utf8");
             $this->link->select_db($this->database);
         }
 

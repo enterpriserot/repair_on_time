@@ -37,6 +37,13 @@
                       <a class="page-scroll" href="<?php amigable('?module=users&function=form_users'); ?>">Users</a>
                   </li>
                   <li class="
+                          <?php if(isset($_GET['module']) === 'technicians')
+                                   echo'active';
+                                else
+                                   echo 'deactivate';
+                          ?>"><a href="<?php amigable('?module=technicians'); ?>">TECHNICIANS</a>
+                  </li>
+                  <li class="
                           <?php if(isset($_GET['module']) === 'contact')
                                    echo'active';
                                 else

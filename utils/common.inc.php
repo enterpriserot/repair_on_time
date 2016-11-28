@@ -31,7 +31,10 @@
     			   if (isset($arrPassValue)){
                 $arrData = $arrPassValue;
              }
-    			  include_once($view_path);
+             require_once(VIEW_PATH_INC . "header.php");
+             require_once(VIEW_PATH_INC . "menu.php");
+    			   include_once($view_path);
+             require_once(VIEW_PATH_INC."footer.php");
     		} else {
 
           //millora per a no utilitzar  ob_start() per evitar dublicació de headers

@@ -9,23 +9,15 @@
       }
 
       public function form_users() {
-        require_once(VIEW_PATH_INC."header.php");
-        require_once(VIEW_PATH_INC."menu.php");
-
         echo '<br>';
         loadView('modules/users/view/','form_users.php');
 
-        require_once(VIEW_PATH_INC."footer.php");
       }//create users
 
 			public function results_users(){
-        require_once(VIEW_PATH_INC."header.php");
-        require_once(VIEW_PATH_INC."menu.php");
-
         echo '<br><br><br><br><br>';
         loadView('modules/users/view/','result_users.php');
 
-        require_once(VIEW_PATH_INC."footer.php");
       }//result users
 
 			public function upload_users(){

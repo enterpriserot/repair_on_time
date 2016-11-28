@@ -13,6 +13,10 @@
         <uri>products</uri>
     </module>
     <module>
+        <name>technicians</name>
+        <uri>technicians</uri>
+    </module>
+    <module>
         <name>contact</name>
         <uri>contact</uri>
     </module>

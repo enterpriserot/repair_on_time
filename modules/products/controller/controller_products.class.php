@@ -8,12 +8,8 @@
     }
 
     public function list_products() {
-      require_once(VIEW_PATH_INC."header.php");
-			require_once(VIEW_PATH_INC."menu.php");
 
       loadView('modules/products/view/', 'list_products.php');
-
-      require_once(VIEW_PATH_INC."footer.php");
     }
 
     public function autocomplete_products() {

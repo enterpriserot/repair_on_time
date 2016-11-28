@@ -14,7 +14,7 @@
     $model_name = "";
 
     //we need have this because if not exist $porciones[1], app will have problems when we sent error (showErrorPage(2..)).
-    if(isset($porciones[1])){
+    if(isset($porciones[1])){      
         $model_name = $porciones[1];
         $model_name = strtoupper($model_name);
     }

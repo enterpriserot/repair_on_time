@@ -4010,3 +4010,16 @@ Warning on line 46 in file /var/www/html/repair_on_time/model/db.class.singleton
 26/11/16 06:21:19 PM | error loadView general | users | response 400
 26/11/16 06:21:37 PM | error loadView general | users | response 400
 26/11/16 06:21:39 PM | error loadView general | modules/contact/view | response 400
+27/11/16 01:52:03 PM | error loadView general | users | response 400
+27/11/16 11:54:08 PM | error loadView general | technicians | response 400
+27/11/16 11:55:05 PM | error loadView general | users | response 400
+27/11/16 11:55:06 PM | error loadView general | technicians | response 400
+28/11/16 12:05:38 AM | error loadView general | technicians | response 400
+28/11/16 12:05:44 AM | error loadView general | users | response 400
+28/11/16 12:05:45 AM | error loadView general | technicians | response 400
+28/11/16 12:28:28 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 12:31:11 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
