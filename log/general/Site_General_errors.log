@@ -4023,3 +4023,36 @@ Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model
 28/11/16 12:31:11 PM | ERROR: [8] Undefined variable: fields
 Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
  |  | response 200
+28/11/16 04:18:51 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:35:54 PM | error loadView general | users | response 400
+28/11/16 05:35:55 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:45:43 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:46:00 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:46:28 PM | error loadView general | users | response 400
+28/11/16 05:46:30 PM | error loadView general | modules/contact/view | response 400
+28/11/16 05:46:45 PM | error loadView general | modules/contact/view | response 400
+28/11/16 05:47:02 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:49:08 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:49:15 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:49:18 PM | error loadView general | users | response 400
+28/11/16 05:49:27 PM | error loadView general | users | response 400
+28/11/16 05:49:32 PM | error loadView general | modules/contact/view | response 400
+28/11/16 05:58:07 PM | ERROR: [8] Undefined variable: fields
+Notice on line 80 in file /var/www/html/repair_on_time/modules/technicians/model/DAO/technicians_dao.class.singleton.php
+ |  | response 200
+28/11/16 05:59:57 PM | error loadView general | modules/contact/view | response 400
+28/11/16 06:01:01 PM | error loadView general | modules/contact/view | response 400

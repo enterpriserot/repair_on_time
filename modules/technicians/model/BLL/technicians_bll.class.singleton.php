@@ -19,15 +19,15 @@ class technicians_bll {
         return $this->dao->create_technicians_dao($this->db, $arrArgument);
     }
 
-    public function update_BLL($arrArgument) {
+    public function update_bll($arrArgument) {
         return $this->dao->update_dao($this->db, $arrArgument);
     }
 
-    public function count_BLL($arrArgument) {
+    public function count_bll($arrArgument) {
         return $this->dao->count_dao($this->db, $arrArgument);
     }
 
-    public function select_BLL($arrArgument) {
+    public function select_bll($arrArgument) {
         return $this->dao->select_dao($this->db, $arrArgument);
     }
 }
