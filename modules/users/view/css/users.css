@@ -78,6 +78,13 @@ form { display: block; margin: 20px auto; background: #eee; border-radius: 10px;
 		#progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
 		#bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
 		#percent { position:absolute; display:inline-block; top:3px; left:48%; }
+.dropzone {
+    width: 500px;
+    min-height: 150px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 20px 20px;
+}
 .msg{
     color: white;
     font-weight: bold;
@@ -85,7 +92,7 @@ form { display: block; margin: 20px auto; background: #eee; border-radius: 10px;
     line-height: 32px;
     padding: 0 10px;
     position: absolute;
-    right: -155px;
+    right: 155px;
     text-transform: uppercase;
     min-width: 121px;
 }
