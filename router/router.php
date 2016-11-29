@@ -50,14 +50,14 @@
 
   					$obj = new $controllerClass;
   				} else {
-            showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+            handlerModule('main', 'begin');
   				}
 	        handlerfunction(((String)$module->name), $obj, $URI_function);
 	        break;
 	        }
 	    }
 	    if (!$exist) {
-          showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+          handlerModule('main', 'begin');
 	    }
 	}//End handleModule
 
@@ -74,7 +74,7 @@
           }
       }
       if(!$exist){
-        showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
+        handlerModule('main', 'begin');
       }else{
         call_user_func(array($obj, $event));
       }
