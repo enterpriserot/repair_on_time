@@ -1,17 +1,14 @@
 <?php
     function loadModel($model_path, $model_name, $function, $arrArgument = '') {
-
         $model = $model_path . $model_name . '.class.singleton.php';
 
         if (file_exists($model)) {
             include_once($model);
-
             $modelClass = $model_name;
 
             if (!method_exists($modelClass, $function)){
                 throw new Exception();
             }
-
             $obj = $modelClass::getInstance();
 
             if (isset($arrArgument)) {
@@ -52,7 +49,10 @@
 
         $result = response_code($rutaVista);
         $arrData = $result;
-        require_once VIEW_PATH_INC_ERROR . "error.php";
+        require_once(VIEW_PATH_INC . "header.php");
+        require_once(VIEW_PATH_INC . "menu.php");
+        require_once(VIEW_PATH_INC_ERROR . "error.php");
+        require_once(VIEW_PATH_INC . "footer.html");
 
     		}
 	  }

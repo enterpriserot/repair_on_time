@@ -6,7 +6,7 @@
       //include LOG_DIR;
     }
 
-    public function view_contact(){
+    public function begin(){
         loadView(CONTACT_VIEW_PATH, 'contact.php');
     }
 

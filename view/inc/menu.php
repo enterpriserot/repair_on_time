@@ -28,15 +28,15 @@
                                    echo 'deactivate';
                           ?>">
                       <a class="page-scroll" href="<?php amigable('?module=products&function=list_products'); ?>">Tecnicos</a>
-                  </li>-->
+                  </li>
                   <li class="
                           <?php if(isset($_GET['module']) === 'users')
                                    echo'active';
                                 else
                                    echo 'deactivate';
                           ?>">
-                      <a class="page-scroll" href="<?php amigable('?module=users&function=form_users'); ?>">Users</a>
-                  </li>
+                      <a class="page-scroll" href="<?php amigable('?module=users'); ?>">Users</a>
+                  </li>-->
                   <li class="
                           <?php if(isset($_GET['module']) === 'technicians')
                                    echo'active';
@@ -50,7 +50,7 @@
                                 else
                                    echo 'deactivate';
                           ?>">
-                      <a class="page-scroll" href="<?php amigable('?module=contact&function=view_contact');?>">Contact</a>
+                      <a class="page-scroll" href="<?php amigable('?module=contact');?>">Contact</a>
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
