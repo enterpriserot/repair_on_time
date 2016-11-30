@@ -493,7 +493,7 @@ $(document).ready(function () {
 			}
 		});
     //Dependent combos //////////////////////////////////
-    load_countries_v1();
+    load_countries_v2("../../resources/ListOfCountryNamesByName.json");
     $("#province").empty();
     $("#province").append('<option value="" selected="selected">Select Province</option>');
     $("#province").prop('disabled', true);
