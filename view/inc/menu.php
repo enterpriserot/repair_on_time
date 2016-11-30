@@ -21,14 +21,14 @@
                           ?>">
                       <a class="page-scroll" href="<?php amigable('?module=main'); ?>">Home</a>
                   </li>
-                  <li class="
+                  <!--<li class="
                           <?php if(isset($_GET['module']) === 'products')
                                    echo'active';
                                 else
                                    echo 'deactivate';
                           ?>">
                       <a class="page-scroll" href="<?php amigable('?module=products&function=list_products'); ?>">Tecnicos</a>
-                  </li>
+                  </li>-->
                   <li class="
                           <?php if(isset($_GET['module']) === 'users')
                                    echo'active';
@@ -54,6 +54,11 @@
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
+                <!-- AÑADIR UNA NOVA PATH PER A modules/user/view/ ?-->
+                <li id="LogProf">
+                    <a href="<?php echo PROJECT . "modules/user/view/modal.html"; ?>"
+                    class="button special" data-toggle="modal" id="Login" data-target="#modalLog">Acceder</a>
+                </li>
                   <li>
                       <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">About</a>
                   </li>
@@ -61,3 +66,4 @@
           </div>
       </div>
   </nav>
+  <div id="LoginModal"></div>

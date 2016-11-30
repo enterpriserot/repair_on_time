@@ -1,4 +1,5 @@
 <?php
+
 //SITE_ROOT
 $path = $_SERVER['DOCUMENT_ROOT'] . '/repair_on_time/';
 define('SITE_ROOT', $path);
@@ -57,10 +58,9 @@ define('UTILS',SITE_ROOT.'utils/');
 define('FUNCTIONS_USERS', SITE_ROOT.'modules/users/utils/');
 define('MODEL_PATH_USERS',SITE_ROOT.'modules/users/model/');
 define('MODEL_USERS',SITE_ROOT.'modules/users/model/model/');
-define('BLL_USERS',SITE_ROOT.'modules/users/model/BLL/');
-define('DAO_USERS',SITE_ROOT.'modules/users/model/DAO/');
 define('USERS_JS_PATH', SITE_PATH.'modules/users/view/js/');
 define('USERS_CSS_PATH',SITE_PATH.'modules/users/view/css/');
+define('USERS_VIEW_PATH', SITE_PATH.'modules/users/view/');
 
 //MODULE PRODUCTS
 define('UTILS_PRODUCTS',SITE_ROOT.'modules/products/utils/');
@@ -69,8 +69,6 @@ define('PRODUCTS_JS_PATH', SITE_PATH . 'modules/products/view/js/');
 define('PRODUCTS_CSS_PATH', SITE_PATH . 'modules/products/view/css/');
 define('MODEL_PATH_PRODUCTS',SITE_ROOT.'modules/products/model/');
 define('MODEL_PRODUCTS',SITE_ROOT.'modules/products/model/model/');
-define('BLL_PRODUCTS',SITE_ROOT.'modules/products/model/BLL/');
-define('DAO_PRODUCTS',SITE_ROOT.'modules/products/model/DAO/');
 
 //MODULE CONTACT
 define('CONTACT_JS_PATH', SITE_PATH . 'modules/contact/view/js/');
@@ -82,6 +80,4 @@ define('CONTACT_VIEW_PATH', 'modules/contact/view/');
 //MODULE TECHNICIANS
 define('TECHNICIANS_JS_PATH',SITE_PATH. 'modules/technicians/view/js/');
 define('TECHNICIANS_CSS_PATH', SITE_PATH . 'modules/technicians/view/css/');
-define('BLL_TECHNICIANS',SITE_ROOT.'modules/technicians/model/BLL/');
-define('DAO_TECHNICIANS',SITE_ROOT.'modules/technicians/model/DAO/');
 define('MODEL_TECHNICIANS', SITE_ROOT . 'modules/technicians/model/model/');

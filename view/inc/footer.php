@@ -4,7 +4,7 @@
             <div class="col-xs-6 col-sm-3 column">
                 <h4>Information</h4>
                 <ul class="list-unstyled">
-                    <li><a href="">Products</a></li>
+                    <li><a href="<?php amigable('?module=technicians&function=begin'); ?>">Tecnicos</a></li>
                     <li><a href="">Services</a></li>
                     <li><a href="">Benefits</a></li>
                     <li><a href="">Developers</a></li>
@@ -13,7 +13,7 @@
             <div class="col-xs-6 col-sm-3 column">
                 <h4>About</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="<?php amigable('?module=contact&function=view_contact'); ?>">Contact Us</a></li>
                     <li><a href="#">Delivery Information</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms &amp; Conditions</a></li>
