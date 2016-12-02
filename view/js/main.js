@@ -20,5 +20,6 @@ function amigable(url) {
         link +=  "/"+aux[1];
     }
     return "http://localhost/repair_on_time" + link;
+    //return "http://arevert.tk/repair_on_time" + link;
     // return "https://projects-alumnes-yomogan.c9users.io/proj_final_login/JoinElderly" + link;
 }
