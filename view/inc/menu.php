@@ -56,7 +56,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li id="LogProf">
                     <a href="<?php echo USERS_VIEW_PATH . "modal.html"; ?>"
-                    class="button special" data-toggle="modal" id="Login" data-target="#modalLog">Acceder</a>
+                    class="button special" data-toggle="modal" id="Login" data-target="#LoginModal">Acceder</a>
                 </li>
                   <li>
                       <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">About</a>
@@ -65,4 +65,3 @@
           </div>
       </div>
   </nav>
-  <div id="LoginModal"></div>
