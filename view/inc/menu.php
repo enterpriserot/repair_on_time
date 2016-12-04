@@ -56,7 +56,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <!-- AÑADIR UNA NOVA PATH PER A modules/user/view/ ?-->
                 <li id="LogProf">
-                    <a href="<?php echo PROJECT . "modules/user/view/modal.html"; ?>"
+                    <a href="<?php echo USERS_VIEW_PATH . "modal.html"; ?>"
                     class="button special" data-toggle="modal" id="Login" data-target="#modalLog">Acceder</a>
                 </li>
                   <li>

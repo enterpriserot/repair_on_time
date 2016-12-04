@@ -35,7 +35,7 @@
     <!---////////////////////////////   NOVES LINIES MAP //////////////////////////////////////////-->
     <script type="text/javascript" src="<?php echo JS_PATH ?>cookies.js"></script>
     <script type="text/javascript" src="<?php echo JS_PATH ?>main.js"></script>
-    <script type="text/javascript" src="<?php echo USER_JS_PATH ?>init.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo USER_JS_PATH ?>init.js"></script> -->
     <link href="<?php echo TECHNICIANS_CSS_PATH ?>main.css" rel="stylesheet">
 
     <!--Añadido de plantilla vieja-->
