@@ -129,7 +129,7 @@ function reset() {
 }
 
 $(document).ready(function () {
-  
+
   if (getCookie("search")) {
       var keyword=getCookie("search");
       count_product(keyword);
@@ -179,7 +179,7 @@ $(document).ready(function () {
             source: suggestions,
             minLength: 1,
             select: function (event, ui) {
-                //alert(ui.item.label);
+                alert(ui.item.label);
                 var keyword = ui.item.label;
                 count_product(keyword);
             }
