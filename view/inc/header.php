@@ -30,13 +30,20 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+
 
     <!---////////////////////////////   NOVES LINIES MAP //////////////////////////////////////////-->
     <script type="text/javascript" src="<?php echo JS_PATH ?>cookies.js"></script>
     <script type="text/javascript" src="<?php echo JS_PATH ?>main.js"></script>
-    <script type="text/javascript" src="<?php echo USER_JS_PATH ?>init.js"></script>
+
     <link href="<?php echo TECHNICIANS_CSS_PATH ?>main.css" rel="stylesheet">
 
     <!--Añadido de plantilla vieja-->
   </head>
+<div id="LoginModal" class="modal_login modal fade" tabindex="-4" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+  </div>
+  </div>
+</div>

@@ -101,17 +101,17 @@ function validate_user($value){
           $valid = false;
       }
       if (!$result['email']) {
-          $error['email'] = 'invalid email';
+          $error['email'] = 'Invalid email';
           $result['email'] = $value['email'];
           $valid = false;
       }
       if (!$result['password']) {
-          $error['password'] = 'invalid password';
+          $error['password'] = 'Invalid password';
           $result['password'] = $value['password'];
           $valid = false;
       }
       if(!$result['password'] || $result['password']!=$result['password2'] ){
-          $error['password'] = 'invalid password repeat';
+          $error['password'] = 'Invalid password repeat';
           $result['password'] = $value['password'];
           $valid = false;
       }
@@ -181,4 +181,37 @@ function validate_datebirthday($birthday, $age = 18) {
         return false;
     }
     return true;
+}
+
+function get_gravatar($email, $s = 80, $d = 'wavatar', $r = 'g', $img = false, $atts = array()){
+    $email = trim($email);
+    $email = strtolower($email);
+    $email_hash = md5($email);
+
+    $url = "https://www.gravatar.com/avatar/" . $email_hash;
+    $url .= md5(strtolower(trim($email)));
+    $url .= "?s=$s&d=$d&r=$r";
+    if ($img){
+        $url = '<img src"' . $url . '"';
+        foreach ($atts as $key => $val)
+            $url .= ' ' . $key . '="' . $val . '"';
+        $url .= ' />';
+    }
+    return $url;
+}
+
+function sendtoken($arrArgument, $type){
+    $mail = array(
+        'type' => $type,
+        'token' => $arrArgument['token'],
+        'inputEmail' => $arrArgument['email']
+    );
+    set_error_handler('ErrorHandler');
+    try{
+       enviar_email($mail);
+       return true;
+    }catch (Exception $e){
+       return false;
+    }
+    restore_error_handler();
 }
