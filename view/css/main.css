@@ -173,6 +173,10 @@ input[type="file"] {
       font-weight: bold;
     }
 
+    .modal_login p{
+      text-align: center;
+    }
+
     .modal_login input[type="text"],
     .modal_login input[type="password"]{
       color: #e28763;
@@ -180,8 +184,7 @@ input[type="file"] {
       width: 250px;
       padding: 8px;
       font-family: "font";
-      display: block;
-      margin: 0 auto;
+
       margin-bottom: 1em;
       border-style:hidden;
       border-radius: 4px;

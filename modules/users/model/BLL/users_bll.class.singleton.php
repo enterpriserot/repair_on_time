@@ -1,5 +1,6 @@
 <?php
-
+// echo json_encode("USERS BLL");
+// exit;
 class users_bll{
 
     private $dao;
@@ -12,9 +13,8 @@ class users_bll{
     }
 
     public static function getInstance() {
-        if (!(self::$_instance instanceof self)){
+        if (!(self::$_instance instanceof self))
             self::$_instance = new self();
-        }
         return self::$_instance;
     }
 
@@ -22,16 +22,16 @@ class users_bll{
       return $this->dao->create_users_dao($this->db, $arrArgument);
     }
 
-    public function update($arrArgument){
-        return $this->dao->update_dao($arrArgument);
+    public function update_bll($arrArgument){
+        return $this->dao->update_dao($this->db, $arrArgument);
     }
 
-    public function count($arrArgument){
-        return $this->dao->count_dao($arrArgument);
+    public function count_bll($arrArgument){
+        return $this->dao->count_dao($this->db, $arrArgument);
     }
 
-    public function select($arrArgument){
-        return $this->dao->select_dao($arrArgument);
+    public function select_bll($arrArgument){
+        return $this->dao->select_dao($this->db, $arrArgument);
     }
 
     public function obtain_countries_bll($url){

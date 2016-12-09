@@ -1,16 +1,17 @@
 $(document).ready(function () {
+  console.log("Document READY");
     $("#submitLog").click(function () {
         login();
     });
 
     $("#inputUser").keyup(function () {
-        if ($(this).val().length != "") {
+        if ($(this).val().length !== "") {
             $(".error").fadeOut();
             return false;
         }
     });
     $("#inputPass").keyup(function () {
-        if ($(this).val().length != "") {
+        if ($(this).val().length !== "") {
             $(".error").fadeOut();
             return false;
         }
@@ -25,33 +26,41 @@ function login() {
 
     $(".error").remove();
     if (!user) {
-        $("#inputUser").focus().after("<span class='error'>Usuario vacío</span>");
+        $("#inputUser").focus().after("<span class='error'>User empty</span>");
         value = false;
     } else {
         if (!pass) {
-            $("#inputPass").focus().after("<span class='error'>Contraseña vacía</span>");
+            $("#inputPass").focus().after("<span class='error'>Password empty</span>");
             value = false;
         } else
             value = true;
     }
 
-    var data = {"usuario": user, "pass": pass};
+    var data = {"email": user, "pass": pass};
     var login_JSON = JSON.stringify(data);
+
     if (value){
-        $.post(amigable("?module=user&function=login"), {login_json: login_JSON},
+        // console.log(amigable("?module=users&function=login"));
+        $.post(amigable("?module=users&function=login"), {login_json: login_JSON},
         function (response) {
             console.log(response);
             if (!response.error) {
+              console.log(response.error);
                 //create session cookies
-                Tools.createCookie("user", response[0]['user'] + "|" + response[0]['avatar'] + "|" + response[0]['tipe'] + "|" + response[0]['name'], 1);
+                Tools.createCookie("user", response[0]['user'] + "|" + response[0]['avatar'] + "|" + response[0]['type'] + "|" + response[0]['name'], 1);
                 window.location.href = amigable("?module=main");
             } else {
-                if (response.datos == 503)
+              console.log("ELSE DEL POST");
+                if (response.data == 503)
                     window.location.href = amigable("?module=main&fn=begin&param=503");
                 else
-                    $("#inputPass").focus().after("<span class='error'>" + response.datos + "</span>");
+                    $("#inputPass").focus().after("<span class='error'>" + response.data + "</span>");
             }
         }, "json").fail(function (xhr, textStatus, errorThrown) {
+          console.log(xhr);
+          console.log(xhr.status);
+          console.log(textStatus);
+          console.log(errorThrown);
             console.log(xhr.responseText);
             if (xhr.status === 0) {
                 alert('Not connect: Verify Network.');

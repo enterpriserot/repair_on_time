@@ -1,5 +1,6 @@
 <?php
-
+// echo json_encode("USERS MODEL");
+// exit;
 class users_model {
     private $bll;
     static $_instance;
@@ -9,9 +10,8 @@ class users_model {
     }
 
     public static function getInstance() {
-        if (!(self::$_instance instanceof self)){
+        if (!(self::$_instance instanceof self))
             self::$_instance = new self();
-        }
         return self::$_instance;
     }
 

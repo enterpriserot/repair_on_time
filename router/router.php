@@ -11,7 +11,8 @@
 
   if(PRODUCTION){
       ini_set('display_errors', '1');
-      ini_set('error_reporting', E_ERROR | E_WARNING | E_NOTICE); //error_reporting(E_ALL) ;
+      // ini_set('error_reporting', E_ERROR | E_WARNING | E_NOTICE); //error_reporting(E_ALL) ;
+      ini_set('error_reporting', E_ERROR | E_WARNING ); //error_reporting(E_ALL) ;
 	}else{
   		ini_set('display_errors', '0');
   		ini_set('error_reporting', '0'); //error_reporting(0);
