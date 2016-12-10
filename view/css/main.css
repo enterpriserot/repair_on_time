@@ -221,3 +221,10 @@ input[type="file"] {
     .modal_login 	.log_link{
       font-size: 0.9em;
     }
+
+
+    #menuImg{
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 2em;
+    }

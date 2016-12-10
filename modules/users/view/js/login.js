@@ -1,62 +1,97 @@
 $(document).ready(function () {
-  console.log("Document READY");
-    $("#submitLog").click(function () {
-        login();
-    });
+  console.log('Document READY');
 
-    $("#inputUser").keyup(function () {
-        if ($(this).val().length !== "") {
-            $(".error").fadeOut();
+  // var button= document.getElementById('submitLog');
+  //
+  // button.addEventListener('click', function(){
+  //    login();
+  // });
+
+  $('#submitLog').click(function () {
+      login();
+  });
+
+  // var email= document.getElementById('inputUser');
+  // email.addEventListener('keyup', function(){
+  //   if ($(this).val().length !== '') {
+  //       $('.error').fadeOut();
+  //       return false;
+  //   }
+  // });
+
+    $('#inputUser').keyup(function () {
+        if ($(this).val().length !== '') {
+            $('.error').fadeOut();
             return false;
         }
     });
-    $("#inputPass").keyup(function () {
-        if ($(this).val().length !== "") {
-            $(".error").fadeOut();
+
+    // var pass= document.getElementById('inputPass');
+    // pass.addEventListener('keyup', function(){
+    //   if ($(this).val().length !== '') {
+    //       $('.error').fadeOut();
+    //       return false;
+    //   }
+    // });
+
+    $('#inputPass').keyup(function () {
+        if ($(this).val().length !== '') {
+            $('.error').fadeOut();
             return false;
         }
     });
 
 });
 
+// jQuery.noConflict();
+// (function($) {
+//   $(function() {
+//    // by passing the $ you can code using the $ alias for jQuery
+//    alert('Page: ' + $('title').html() + ' dom loaded!');
+//   });
+// })(jQuery);
+
+
+
 function login() {
-    var user = $("#inputUser").val();
-    var pass = $("#inputPass").val();
+    var user = $('#inputUser').val();
+    var pass = $('#inputPass').val();
     var value = false;
 
-    $(".error").remove();
+    $('.error').remove();
     if (!user) {
-        $("#inputUser").focus().after("<span class='error'>User empty</span>");
+        $('#inputUser').focus().after("<span class='error'>User empty</span>");
         value = false;
     } else {
         if (!pass) {
-            $("#inputPass").focus().after("<span class='error'>Password empty</span>");
+            $('#inputPass').focus().after("<span class='error'>Password empty</span>");
             value = false;
         } else
             value = true;
     }
 
-    var data = {"email": user, "pass": pass};
+    var data = {'email': user, 'pass': pass};
     var login_JSON = JSON.stringify(data);
 
     if (value){
-        // console.log(amigable("?module=users&function=login"));
-        $.post(amigable("?module=users&function=login"), {login_json: login_JSON},
+        // console.log(amigable('?module=users&function=login'));
+        $.post(amigable('?module=users&function=login'), {login_json: login_JSON},
         function (response) {
             console.log(response);
             if (!response.error) {
               console.log(response.error);
                 //create session cookies
-                Tools.createCookie("user", response[0]['user'] + "|" + response[0]['avatar'] + "|" + response[0]['type'] + "|" + response[0]['name'], 1);
-                window.location.href = amigable("?module=main");
+                console.log(response[0]);
+                Tools.createCookie('user', response[0]['email'] + '|' + response[0]['avatar'] + '|' + response[0]['type'] + '|' + response[0]['name'], 1);
+                window.location.href = amigable('?module=main/');
             } else {
-              console.log("ELSE DEL POST");
+              console.log('ELSE DEL POST');
                 if (response.data == 503)
-                    window.location.href = amigable("?module=main&fn=begin&param=503");
+                    window.location.href = amigable('?module=main&fn=begin&param=503');
                 else
-                    $("#inputPass").focus().after("<span class='error'>" + response.data + "</span>");
+                    $('#inputPass').focus().after("<span class='error'>" + response.data + "</span>");
             }
-        }, "json").fail(function (xhr, textStatus, errorThrown) {
+        }, 'json').fail(function (xhr, textStatus, errorThrown) {
           console.log(xhr);
           console.log(xhr.status);
           console.log(textStatus);

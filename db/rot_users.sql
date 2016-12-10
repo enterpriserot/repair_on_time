@@ -31,7 +31,7 @@ CREATE TABLE `users` (
   `surnames` varchar(250) ,
   `mobile` varchar(20) ,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) ,
+  `password` varchar(250) ,
   `date_birthday` varchar(50) ,
   `type` varchar(20) ,
   `country` varchar(45) ,
@@ -50,7 +50,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (0,'470Z','Toni','Revert','612789456','test@test.com','123456','05/05/1981','individual','AT','default_province','default_city','Calle','./media/default-avatar.png','14a40272b4c4a9f052d3f72fc00d2f8a');
+INSERT INTO `users` VALUES (0,'470Z','Toni','Revert','612789456','test@test.com','$2y$10$A82vZHOTJMt15DoLaO5.4.KPGtg0rz3SEc7MyALJyR9\/\/M9lSrZNW','05/05/1981','individual','AT','default_province','default_city','Calle','./media/default-avatar.png','14a40272b4c4a9f052d3f72fc00d2f8a');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

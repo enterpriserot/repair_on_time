@@ -42,7 +42,7 @@
         <br/>
     </div>
 </footer>
-<div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
@@ -54,7 +54,7 @@
       </div>
     </div>
     </div>
-</div>
+</div> -->
 <!--Modal que apareix al fer click al about -->
 <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -91,20 +91,14 @@
     </div>
 </div>
 <!--scripts loaded here from cdn for performance -->
-<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="<?php echo JS_PATH ?>scripts.js"></script>-->
-<!-- <script src="<?php echo PLUGINS_PATH ?>bootstrap.js"></script> -->
 
 <!--Añadido de vieja plantilla-->
 <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 <!-- BOOTSTRAP SCRIPTS  -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <!-- PRETTYPHOTO SCRIPTS  -->
-<script src="<?php echo PLUGINS_PATH ?>jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="<?php echo PLUGINS_PATH ?>jquery.prettyPhoto.js"></script>
 <!-- CUSTOM SCRIPTS  -->
-<script src="<?php echo JS_PATH ?>/custom.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH ?>/custom.js"></script>
 </body>
 </html>

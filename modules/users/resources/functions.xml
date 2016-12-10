@@ -17,6 +17,14 @@
         <uri>alta_users</uri>
     </function>
     <function>
+        <name>signup</name>
+        <uri>signup</uri>
+    </function>
+    <function>
+        <name>signup_user</name>
+        <uri>signup_user</uri>
+    </function>
+    <function>
         <name>login</name>
         <uri>login</uri>
     </function>
@@ -43,5 +51,9 @@
     <function>
         <name>load_cities_users</name>
         <uri>load_cities_users</uri>
+    </function>
+    <function>
+        <name>social_signin</name>
+        <uri>social_signin</uri>
     </function>
 </functions>
