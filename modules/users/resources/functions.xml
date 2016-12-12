@@ -1,43 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <functions>
     <function>
-        <name>form_users</name>
-        <uri>form_users</uri>
+        <name>begin</name>
+        <uri>begin</uri>
     </function>
     <function>
-        <name>results_users</name>
-        <uri>results_users</uri>
+        <name>signup</name>
+        <uri>alta</uri>
     </function>
     <function>
-        <name>upload_users</name>
-        <uri>upload_users</uri>
+        <name>restore</name>
+        <uri>recuperar</uri>
     </function>
     <function>
-        <name>alta_users</name>
-        <uri>alta_users</uri>
+        <name>process_restore</name>
+        <uri>process_restore</uri>
     </function>
     <function>
-        <name>delete_users</name>
-        <uri>delete_users</uri>
+        <name>signup_user</name>
+        <uri>signup_user</uri>
     </function>
     <function>
-        <name>load_users</name>
-        <uri>load_users</uri>
+        <name>login</name>
+        <uri>login</uri>
     </function>
     <function>
-        <name>load_data_users</name>
-        <uri>load_data_users</uri>
+        <name>changepass</name>
+        <uri>cambiarpass</uri>
     </function>
     <function>
-        <name>load_country_users</name>
-        <uri>load_country_users</uri>
+        <name>update_pass</name>
+        <uri>update_pass</uri>
     </function>
     <function>
-        <name>load_provinces_users</name>
-        <uri>load_provinces_users</uri>
+        <name>verify</name>
+        <uri>activar</uri>
     </function>
     <function>
-        <name>load_cities_users</name>
-        <uri>load_cities_users</uri>
+        <name>profile</name>
+        <uri>profile</uri>
+    </function>
+    <function>
+        <name>modify</name>
+        <uri>modify</uri>
+    </function>
+    <function>
+        <name>profile_filler</name>
+        <uri>profile_filler</uri>
+    </function>
+    <function>
+        <name>upload_avatar</name>
+        <uri>upload_avatar</uri>
+    </function>
+    <function>
+        <name>delete_avatar</name>
+        <uri>delete_avatar</uri>
+    </function>
+    <function>
+        <name>load_pais_user</name>
+        <uri>load_pais_user</uri>
+    </function>
+    <function>
+        <name>load_provincias_user</name>
+        <uri>load_provincias_user</uri>
+    </function>
+    <function>
+        <name>load_poblaciones_user</name>
+        <uri>load_poblaciones_user</uri>
+    </function>
+    <function>
+        <name>social_signin</name>
+        <uri>social_signin</uri>
     </function>
 </functions>
