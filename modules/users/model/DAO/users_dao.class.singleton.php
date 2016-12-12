@@ -140,9 +140,9 @@ class users_dao {
 
     public function obtain_provinces_dao(){
           // $json = array();
-          $tmp = array();
-
           // $json = "Estoy en obtain provinces dao";
+
+          $tmp = array();
 
           $provincias = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");
           $result = $provincias->xpath("/lista/provincia/nombre | /lista/provincia/@id");
