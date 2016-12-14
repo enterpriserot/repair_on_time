@@ -17,7 +17,7 @@
 
         <input class="btn btn-primary" type="submit" name="submit" id="restoreBtn" disabled="disabled" value="Enviar" />
 
-        <img src="<?php echo CONTACT_IMG_PATH; ?>ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>
+        <img src="<?php echo CONTACT_IMG_PATH; ?>ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" style="display:none"/><br/><br/>
 
         <div id="resultMessage" style="display: none;"></div>
     </form>

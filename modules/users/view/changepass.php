@@ -17,7 +17,7 @@
 
         <input class="btn btn-primary" type="button" name="submit" id="changeBtn" value="Enviar"/>
 
-        <img src="<?php echo CONTACT_IMG_PATH; ?>ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>
+        <img src="<?php echo CONTACT_IMG_PATH; ?>ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" style="display:none"/><br/><br/>
 
         <div id="resultMessage" style="display: none;"></div>
     </form>

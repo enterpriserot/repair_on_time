@@ -14,9 +14,8 @@ function paint(dataString) {
     // Enable button after processing
     $('#restoreBtn').attr('disabled', false);
 
-    $url = amigable('?module=main');
     setTimeout(function () {
-        window.location.href = $url;
+        window.location.href = amigable('?module=main/');
     }, 3000);
 }
 
@@ -50,12 +49,13 @@ $(document).ready(function () {
             $('#restoreBtn').attr('disabled', true);
 
             // show ajax loader icon
+            $('.ajaxLoader').show();
             $('.ajaxLoader').fadeIn("fast");
 
             var dataString = $("#restore_form").serialize();
             $.ajax({
                 type: "POST",
-                url: amigable("?module=user&function=process_restore"),
+                url: amigable("?module=users&function=process_restore"),
                 data: dataString,
                 success: function (dataString) {
                     paint(dataString);
