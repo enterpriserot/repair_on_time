@@ -65,7 +65,7 @@
           </div>
       </div>
   </nav>
-  <div id="LoginModal" class="modal_login modal fade" tabindex="-4" role="dialog" aria-hidden="true">
+  <div id="LoginModal" class="modal_login modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         </div>

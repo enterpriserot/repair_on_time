@@ -99,6 +99,6 @@
 <!-- PRETTYPHOTO SCRIPTS  -->
 <script type="text/javascript" src="<?php echo PLUGINS_PATH ?>jquery.prettyPhoto.js"></script>
 <!-- CUSTOM SCRIPTS  -->
-<script type="text/javascript" src="<?php echo JS_PATH ?>/custom.js"></script>
+<script type="text/javascript" src="<?php echo JS_PATH ?>custom.js"></script>
 </body>
 </html>

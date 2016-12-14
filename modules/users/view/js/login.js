@@ -1,23 +1,8 @@
 $(document).ready(function () {
-  console.log('Document READY');
-
-  // var button= document.getElementById('submitLog');
-  //
-  // button.addEventListener('click', function(){
-  //    login();
-  // });
 
   $('#submitLog').click(function () {
       login();
   });
-
-  // var email= document.getElementById('inputUser');
-  // email.addEventListener('keyup', function(){
-  //   if ($(this).val().length !== '') {
-  //       $('.error').fadeOut();
-  //       return false;
-  //   }
-  // });
 
     $('#inputUser').keyup(function () {
         if ($(this).val().length !== '') {
@@ -25,14 +10,6 @@ $(document).ready(function () {
             return false;
         }
     });
-
-    // var pass= document.getElementById('inputPass');
-    // pass.addEventListener('keyup', function(){
-    //   if ($(this).val().length !== '') {
-    //       $('.error').fadeOut();
-    //       return false;
-    //   }
-    // });
 
     $('#inputPass').keyup(function () {
         if ($(this).val().length !== '') {
@@ -42,16 +19,6 @@ $(document).ready(function () {
     });
 
 });
-
-// jQuery.noConflict();
-// (function($) {
-//   $(function() {
-//    // by passing the $ you can code using the $ alias for jQuery
-//    alert('Page: ' + $('title').html() + ' dom loaded!');
-//   });
-// })(jQuery);
-
-
 
 function login() {
     var user = $('#inputUser').val();
@@ -86,10 +53,11 @@ function login() {
                 window.location.href = amigable('?module=main/');
             } else {
               console.log('ELSE DEL POST');
-                if (response.data == 503)
-                    window.location.href = amigable('?module=main&fn=begin&param=503');
-                else
+                if (response.data == 503){
+                    window.location.href = amigable('?module=main&fn=begin&param=503/');
+                }else{
                     $('#inputPass').focus().after("<span class='error'>" + response.data + "</span>");
+                }
             }
         }, 'json').fail(function (xhr, textStatus, errorThrown) {
           console.log(xhr);

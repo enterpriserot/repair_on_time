@@ -1,33 +1,39 @@
 $(document).ready(function () {
     /////**modal login*///
-    var modalbase = '<div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">' +
-            '<div class="modal-dialog" role="document">' +
-            '<div class="modal-content">' +
-            '</div>' +
-            '</div>' +
-            '<div class="modal-footer">' +
-            '<div class="8u 12u$(medium)">' +
-            '<div class="copyright">' +
-            '&copy; 2016 JoinElderly. All rights reserved.' +
-            ' </div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-    $("#LoginModal").append(modalbase);
-
+    // var modalbase = '<div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">' +
+    //         '<div class="modal-dialog" role="document">' +
+    //         '<div class="modal-content">' +
+    //         '</div>' +
+    //         '</div>' +
+    //         '<div class="modal-footer">' +
+    //         '<div class="8u 12u$(medium)">' +
+    //         '<div class="copyright">' +
+    //         '&copy; 2016 JoinElderly. All rights reserved.' +
+    //         ' </div>' +
+    //         '</div>' +
+    //         '</div>' +
+    //         '</div>';
+    // var modalbase = '<div class="modal fade" id="modalLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+    // $("#LoginModal").append(modalbase);
+    // $( ".modal-content" ).empty();
     ////**user menu*///
     var user = Tools.readCookie("user");
     if (user) {
         console.log(user); //
         user = user.split("|");
-        $("#LogProf").html("<a href=" + amigable('?module=user&function=profile') + "><img id='menuImg' class='icon rounded' src='." + user[1] + "'/>" + user[3] + "</a>");
-        $("#LogProf").after("<li><a id='logout' href='#' >Log Out</a></li>");
+        $("#LogProf").html("<a href=" + amigable('?module=user&function=profile') + "><img id='menuImg' class='icon rounded' src='." + user[1] + "'\/>" + user[3] + "<\/a>");
+        $("#LogProf").after("<li><a id='logout' href='#' >Log Out<\/a><\/li>");
         if ( (user[2] === "worker") || (user[2] === "client")  ) {
-            $("#LogProf").before("<li><a href=" + amigable('?module=ofertas') + ">My tickets</a></li>");
+            $("#LogProf").before("<li><a href=" + amigable('?module=ofertas/') + ">My tickets<\/a><\/li>");
         } else if (user[2] === "admin") {
-            $("#LogProf").before("<li><a href=" + amigable('?module=admin') + ">Admin</a></li>");
+            $("#LogProf").before("<li><a href=" + amigable('?module=admin/') + ">Admin<\/a><\/li>");
         }
-        $("head").append("<script src='modules/users/view/js/logout.js'></script>");
+        // try{
+            $("head").append("<script type='text/javascript' src='http://localhost/repair_on_time/modules/users/view/js/logout.js'><\/script>");
+        // }
+        // catch(ex){
+        //   console.log(ex);
+        // }
     }
 
     var url = window.location.href;

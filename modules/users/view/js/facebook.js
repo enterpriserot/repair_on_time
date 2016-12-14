@@ -50,7 +50,7 @@ function getUserInfo() {
           if (!response.error) {
               Tools.createCookie("user", response[0]['user'] + "|" + response[0]['avatar'] + "|" + response[0]['tipe'] + "|" + response[0]['name'], 1);
 //////////Revisar link amigable
-              window.location.href = amigable("?module=main");
+              window.location.href = amigable("?module=main/");
           } else {
               if (response.datos == 503)
 //////////Revisar link amigable
@@ -93,7 +93,6 @@ function Logout(){
       window.location.href = amigable("?module=main");
   });
   }
-}
 
 	  // Load the SDK asynchronously
 	  (function(d){
