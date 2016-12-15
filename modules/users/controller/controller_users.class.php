@@ -9,6 +9,11 @@
 				$_SESSION['module'] = "users";
 		}
 
+		//////////////begin signup////////////
+		function signup() {
+			loadView('modules/users/view/'.'signup.php');
+		}
+
 		//////////////begin restore////////////
     function restore() {
         loadView('modules/users/view/', 'restore.php');
