@@ -17,6 +17,7 @@ $(document).ready(function () {
 });
 
 function changepass() {
+
     var password = $("#inputPassword").val();
     var password2 = $("#inputPassword2").val();
     var value = false;
@@ -31,16 +32,25 @@ function changepass() {
         $("#inputPassword2").after('<span class="error">Las passwords no coiciden</span>');
         value = false;
     } else if (password === password2) {
+
+      // show ajax loader icon
+      $('.ajaxLoader').show();
+      $('.ajaxLoader').fadeIn("fast");
+
         value = true;
         var token = window.location.href;
         token = token.split("/");
-        console.log(token);
-        var data = {"password": password, "token": token[7]};
+        console.log(token[6]);
+        var data = {"password": password, "token": token[6]};
         var change_JSON = JSON.stringify(data);
-            $.post(amigable("?module=user&function=update_pass"), {passw: change_JSON},
+            $.post(amigable("?module=users&function=update_pass"), {passw: change_JSON},
             function (response) {
+              console.log(response);
                 if (response.success) {
-                    window.location.href = response.redirect;
+                  setTimeout(function () {
+                      window.location.href = response.redirect;
+                  }, 3000);
+                  //  window.location.href = response.redirect;
                 }
             }, "json").fail(function (xhr, textStatus, errorThrown) {
                 //console.log(xhr);

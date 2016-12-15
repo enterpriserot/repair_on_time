@@ -9,13 +9,14 @@
         switch ($arr['type']) {
             case 'alta':
                 $subject = 'Email confirmation from Repair on Time';
-                $ruta = "<a href='" . amigable("?module=login&function=activar&aux=A" . $arr['token'], true) . "'>aqu&iacute;</a>";
+                $ruta = "<a href='" . amigable("?module=login&function=activar&aux=" . $arr['token'], true) . "'>aqu&iacute;</a>";
                 $body = 'Thanks for joining to our app<br> To end the process , click here: ' . $ruta;
                 break;
 
             case 'modificacion':
-                $subject = 'Tu Nuevo Password en Rural_Shop<br>';
-                $ruta = '<a href="' . amigable("?module=login&function=activar&aux=F" . $arr['token'], true) . '">aqu&iacute;</a>';
+                $subject = 'Tu Nuevo Password en Repair on Time<br>';
+                // $ruta = '<a href="' . amigable("?module=users&function=changepass&aux=" . $arr['token'], true) . '">aqu&iacute;</a>';
+                $ruta = '<a href="' . amigable("?module=users&function=changepass", true). $arr['token'] . '">aqu&iacute;</a>';
                 $body = 'Para recordar tu password pulsa ' . $ruta;
                 break;
 
