@@ -16,33 +16,36 @@ class users_dao {
         return self::$_instance;
     }
 
-    // public function create_users_dao($db, $arrArgument) {
-    //     $dni = $arrArgument['dni'];
-    //     $name = $arrArgument['name'];
-    //     $surnames = $arrArgument['surnames'];
-    //     $mobile = $arrArgument['mobile'];
-    //     $email = $arrArgument['email'];
-    //     $password = $arrArgument['password'];
-    //     $date_birthday = $arrArgument['date_birthday'];
-    //     $type = $arrArgument['type'];
-    //     $country = $arrArgument['country'];
-    //     $province = $arrArgument['province'];
-    //     $city = $arrArgument['city'];
-    //     $street = $arrArgument['street'];
-    //     $avatar = $arrArgument['avatar'];
-    //
-    //
-    //
-    //     $sql = "INSERT INTO users (dni, name, surnames, mobile, email,"
-    //             . " password, date_birthday, type, country, province,"
-    //             . " city, street, avatar) VALUES ('$dni', '$name',"
-    //             . " '$surnames', '$mobile', '$email', '$password', '$date_birthday', "
-    //             . " '$type', '$country', '$province',"
-    //             . " '$city', '$street', '$avatar')";
-    //
-    //     return $db->ejecutar($sql);
-    //
-    // }//End create_users_dao
+    public function create_users_dao($db, $arrArgument) {
+        $active = $arrArgument['active'];
+        $dni = $arrArgument['dni'];
+        $name = $arrArgument['name'];
+        $surnames = $arrArgument['surnames'];
+        $mobile = $arrArgument['mobile'];
+        $email = $arrArgument['email'];
+        $password = $arrArgument['password'];
+        $date_birthday = $arrArgument['date_birthday'];
+        $type = $arrArgument['type'];
+        $country = $arrArgument['country'];
+        $province = $arrArgument['province'];
+        $city = $arrArgument['city'];
+        $street = $arrArgument['street'];
+        $avatar = $arrArgument['avatar'];
+
+
+
+        $sql = "INSERT INTO users (active, dni, name, surnames, mobile, email,"
+                . " password, date_birthday, type, country, province,"
+                . " city, street, avatar) VALUES ($active, '$dni', '$name',"
+                . " '$surnames', '$mobile', '$email', '$password', '$date_birthday', "
+                . " '$type', '$country', '$province',"
+                . " '$city', '$street', '$avatar')";
+
+        // echo json_encode($sql);
+        // exit;
+        return $db->ejecutar($sql);
+
+    }//End create_users_dao
 
 
     public function select_dao($db, $arrArgument){
@@ -88,7 +91,11 @@ class users_dao {
             $sql .= $arrArgument['column'][$j] . " like '" . $arrArgument['like'][$j] . "'";
         }
 
+        // echo json_encode($sql);
+        // exit;
         $stmt = $db->ejecutar($sql);
+        // echo json_encode($db->listar($stmt));
+        // exit;
         return $db->listar($stmt);
 
         // $json = array();

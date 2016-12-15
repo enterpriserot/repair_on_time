@@ -21,7 +21,7 @@ $(document).ready(function () {
     if (user) {
         console.log(user); //
         user = user.split("|");
-        $("#LogProf").html("<a href=" + amigable('?module=user&function=profile') + "><img id='menuImg' class='icon rounded' src='." + user[1] + "'\/>" + user[3] + "<\/a>");
+        $("#LogProf").html("<a href=" + amigable('?module=user&function=profile') + "><img id='menuImg' class='icon rounded' src='" + user[1] + "'\/>" + user[3] + "<\/a>");
         $("#LogProf").after("<li><a id='logout' href='#' >Log Out<\/a><\/li>");
         if ( (user[2] === "worker") || (user[2] === "client")  ) {
             $("#LogProf").before("<li><a href=" + amigable('?module=ofertas/') + ">My tickets<\/a><\/li>");
@@ -29,7 +29,7 @@ $(document).ready(function () {
             $("#LogProf").before("<li><a href=" + amigable('?module=admin/') + ">Admin<\/a><\/li>");
         }
         // try{
-            $("head").append("<script type='text/javascript' src='http://localhost/repair_on_time/modules/users/view/js/logout.js'><\/script>");
+            $("head").append("<script type='text/javascript' src='//repairontime.tk/modules/users/view/js/logout.js'><\/script>");
         // }
         // catch(ex){
         //   console.log(ex);
