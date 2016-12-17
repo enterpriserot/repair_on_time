@@ -195,6 +195,16 @@ input[type="file"] {
       position: relative;
     }
 
+    .modal_login  #fb{
+      background: url('../../modules/users/view/img/fb_login.png');
+      margin: 0 auto;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 200px;
+      height: 53px;
+      border: none;
+    }
+
     /* Personalització del botó*/
     .modal_login input[type="button"]{
       background-color: #60768d;
@@ -203,7 +213,6 @@ input[type="file"] {
       /*display: block;
       margin: 0 auto;*/
       /*position: relative;
-
 
       padding: 14px;
       padding-left: 24px;
