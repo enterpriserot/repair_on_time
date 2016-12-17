@@ -17,19 +17,20 @@ class users_dao {
     }
 
     public function create_users_dao($db, $arrArgument) {
-        $dni = '';
-        $name = '';
-        $surnames = '';
-        $mobile = '';
+
+        $active = $arrArgument['active'];
+        $dni = $arrArgument['dni'];
+        $name = $arrArgument['name'];
+        $surnames = $arrArgument['surnames'];
+        $mobile = $arrArgument['mobile'];
         $email = $arrArgument['email'];
         $password = $arrArgument['password'];
-        $date_birthday = '';
+        $date_birthday = $arrArgument['date_birthday'];
         $type = $arrArgument['type'];
-        $country = '';
-        $province = '';
-        $city = '';
-        $street = '';
-        $active = $arrArgument['active'];
+        $country = $arrArgument['country'];
+        $province = $arrArgument['province'];
+        $city = $arrArgument['city'];
+        $street = $arrArgument['street'];
         $avatar = $arrArgument['avatar'];
         $token = $arrArgument['token'];
 
@@ -42,6 +43,10 @@ class users_dao {
                 . " '$type', '$country', '$province',"
                 . " '$city', '$street', '$avatar', '$token')";
 
+
+
+        // echo json_encode($sql);
+        // exit;
         return $db->ejecutar($sql);
 
     }//End create_users_dao
@@ -90,7 +95,11 @@ class users_dao {
             $sql .= $arrArgument['column'][$j] . " like '" . $arrArgument['like'][$j] . "'";
         }
 
+        // echo json_encode($sql);
+        // exit;
         $stmt = $db->ejecutar($sql);
+        // echo json_encode($db->listar($stmt));
+        // exit;
         return $db->listar($stmt);
 
         // $json = array();

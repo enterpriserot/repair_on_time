@@ -1,4 +1,6 @@
 <?php
+// echo json_encode("controller users");
+// exit;
 	class controller_users {
 		// echo "controller_users entra";
 
@@ -296,5 +298,79 @@
             echo json_encode($value);
         }
     }
+
     ////////////////end signin//////////////
+
+
+		////////////////////////////////////////////////////begin social///////////////////////////////////////////
+    function social_signin() { //utilitzada per Facebook i Twitter
+
+        $user = json_decode($_POST['user'], true);
+				// echo json_encode("Dins social_signin: ".$user['email']);
+				// exit;
+        // if ($user['twitter']) {
+        //     $user['apellidos'] = "";
+        //     $user['email'] = "";
+        //     $mail = $user['user_id'] . "@gmail.com";
+        // }
+        set_error_handler('ErrorHandler');
+        try {
+            $arrValue = loadModel(MODEL_USERS, "users_model", "count", array('column' => array('email'), 'like' => array($user['email'])));
+						// echo json_encode($arrValue);
+						// exit;
+        } catch (Exception $e) {
+            $arrValue = false;
+        }
+        restore_error_handler();
+				// json_encode("despres error handler ".$arrValue);
+				// exit;
+        if (!$arrValue[0]["total"]) {
+
+            if ($user['email'])
+                $avatar = 'https://graph.facebook.com/' . ($user['email']) . '/picture';
+            else
+                $avatar = get_gravatar($mail, $s = 400, $d = 'identicon', $r = 'g', $img = false, $atts = array());
+
+						// echo json_encode("if arrValue: ".$avatar);
+						// exit;
+            $arrArgument = array(
+                'email' => $user['email'],
+                'name' => $user['name'],
+                'surnames' => $user['surnames'],
+                // 'email' => $user['email'],
+                'type' => 'client',
+                'avatar' => $avatar,
+                'active' => "1"
+            );
+						// echo json_encode("Array: ".$arrArgument['user']);
+						// exit;
+            set_error_handler('ErrorHandler');
+            try {
+                $value = loadModel(MODEL_USERS, "users_model", "create_users", $arrArgument);
+            } catch (Exception $e) {
+                $value = false;
+            }
+            restore_error_handler();
+        } else{
+					$value = true;
+				}
+
+
+        if ($value) {
+						// json_encode("Dins del if");
+						// exit;
+            set_error_handler('ErrorHandler');
+            $arrArgument = array(
+                'column' => array("email"),
+                'like' => array($user['email']),
+                'field' => array('*')
+            );
+            $user = loadModel(MODEL_USERS, "users_model", "select", $arrArgument);
+            restore_error_handler();
+            echo json_encode($user);
+        } else {
+            echo json_encode(array('error' => true, 'datos' => 503));
+        }
+    }
+
 }//End controller users

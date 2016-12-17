@@ -1,6 +1,6 @@
 ;Configuration ini file class email
 email = enterpriserot@gmail.com
-pass = 
+pass = toni&david
 secure = ssl
 auth = true
 host = smtp.gmail.com

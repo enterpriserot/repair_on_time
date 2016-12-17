@@ -42,21 +42,33 @@ function getUserInfo() {
   FB.api('/me', function (response) {
   FB.api('/me', {fields: 'id, first_name, last_name, email'},
   function (response) {
-      var data = {"id": response.id, "name": response.first_name, "surnames": response.last_name, "email": response.email};
+      var data = {"email": response.id, "name": response.first_name, "surnames": response.last_name};
+      console.log(data);
       var datos_social = JSON.stringify(data);
 
-      $.post(amigable('?module=user&function=social_signin'), {user: datos_social},
+      $.post(amigable('?module=users&function=social_signin'), {user: datos_social},
       function (response) {
-          if (!response.error) {
-              Tools.createCookie("user", response[0]['user'] + "|" + response[0]['avatar'] + "|" + response[0]['tipe'] + "|" + response[0]['name'], 1);
-//////////Revisar link amigable
+        console.log(response);
+        console.log(response[0]);
+        console.log("dins function");
+        if (!response.error) {
+          console.log("dins !response error");
+
+            Tools.createCookie("user", response[0]['email'] + "|" + response[0]['avatar'] + "|" + response[0]['type'] + "|" + response[0]['name'], 1);
+
               window.location.href = amigable("?module=main/");
+              // window.location.href = '//repairontime.tk';
           } else {
-              if (response.datos == 503)
-//////////Revisar link amigable
+              if (response.datos == 503){
+                console.log("dins 503");
                   window.location.href = amigable("?module=main&fn=begin&param=503");
+              }
           }
       }, "json").fail(function (xhr, textStatus, errorThrown) {
+        console.log(xhr);
+        console.log(xhr.status);
+        console.log(textStatus);
+        console.log(errorThrown);
           console.log(xhr.responseText);
           if (xhr.status === 0) {
               alert('Not connect: Verify Network.');
