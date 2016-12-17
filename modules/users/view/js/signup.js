@@ -1,29 +1,4 @@
 $(document).ready(function () {
-    // $.datepicker.regional['es'] = {
-    //     closeText: 'Cerrar',
-    //     prevText: '<Ant',
-    //     nextText: 'Sig>',
-    //     currentText: 'Hoy',
-    //     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-    //     monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    //     dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-    //     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-    //     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-    //     weekHeader: 'Sm',
-    //     dateFormat: 'dd/mm/yy',
-    //     firstDay: 1,
-    //     isRTL: false,
-    //     showMonthAfterYear: false,
-    //     yearSuffix: ''
-    // };
-    // $.datepicker.setDefaults($.datepicker.regional['es']);
-
-    // $("#inputBirth").datepicker({
-    //     maxDate: '0',
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     yearRange: "1930:2020"
-    // });
 
     $('#submit_user').click(function () {
       console.log("validate_user");
@@ -35,30 +10,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    // $("#inputUser").keyup(function () {
-    //     if ($(this).val().length >= 3) {
-    //         $(".error").fadeOut();
-    //         return false;
-    //     }
-    // });
-    // $("#inputDni").keyup(function () {
-    //     if ($(this).val().length == 9) {
-    //         $(".error").fadeOut();
-    //         return false;
-    //     }
-    // });
-    // $("#inputName").keyup(function () {
-    //     if ($(this).val().length >= 2) {
-    //         $(".error").fadeOut();
-    //         return false;
-    //     }
-    // });
-    // $("#inputSurn").keyup(function () {
-    //     if ($(this).val().length >= 3) {
-    //         $(".error").fadeOut();
-    //         return false;
-    //     }
-    // });
+
     $("#email").keyup(function () {
         var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
         if ($(this).val() !== "" && emailreg.test($(this).val())) {
@@ -78,12 +30,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    // $("#inputBank").keyup(function () {
-    //     if ($(this).val().length >= 6) {
-    //         $(".error").fadeOut();
-    //         return false;
-    //     }
-    // });
+
 }); //ready
 
 function validate_user() {
@@ -144,17 +91,15 @@ function validate_user() {
         // var data = {"usuario": usuario, "nombre": nombre, "apellidos": apellidos, "email": email,
         //     "password": password, "password2": password2, "date_birthday": date_birthday, "tipo": tipo, "bank": bank, "dni": dni};
         var data = {"email": email, "password": password, "password2": password2};
-        console.log(data);
         var data_users_JSON = JSON.stringify(data);
-        console.log(data_users_JSON);
         $.post(amigable("?module=users&function=signup_user"), {signup_user_json: data_users_JSON},
         function (response) {
-            console.log(response);
+            // console.log(response);
             if (response.success) {
                 window.location.href = response.redirect;
             } else {
                 if (response.typeErr === "Email") {
-                    $("#inputEmail").focus().after("<span class='error'>" + response.error + "</span>");
+                    $("#email").focus().after("<span class='error'>" + response.error + "</span>");
                 } else {
                     // if (response["datos"]["usuario"] !== undefined && response["datos"]["usuario"] !== null) {
                     //     $("#inputUser").focus().after("<span class='error'>" + response["datos"]["usuario"] + "</span>");
