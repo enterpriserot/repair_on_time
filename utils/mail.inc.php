@@ -9,7 +9,7 @@
         switch ($arr['type']) {
             case 'alta':
                 $subject = 'Email confirmation from Repair on Time';
-                $ruta = "<a href='" . amigable("?module=login&function=activar&aux=" . $arr['token'], true) . "'>aqu&iacute;</a>";
+                $ruta = "<a href='" . amigable("?module=users&function=verify", true). $arr['token'] . "'>aqu&iacute;</a>";
                 $body = 'Thanks for joining to our app<br> To end the process , click here: ' . $ruta;
                 break;
 

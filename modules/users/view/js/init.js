@@ -38,18 +38,18 @@ $(document).ready(function () {
 
     var url = window.location.href;
     url = url.split("/");
-    if (url[6] === "activar" && url[7].substring(0, 3) == "Ver"){
+    if (url[5] === "verify" && url[6].substring(0, 3) == "Ver"){
         $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Su email ha sido verificado, disfrute de nuestros servicios</div>");
-    }else if(url[7]==="503"){
+    }else if(url[6]==="503"){
          $("#alertbanner").html("<a href='#alertbanner' class='alertbanner alertbannerErr'>Hay un problema en la base de datos, inténtelo más tarde</div>");
-    }else if (url[6] === "begin") {
-        if (url[7] === "reg"){
+    }else if (url[5] === "begin") {
+        if (url[6] === "reg"){
             $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se le ha enviado un email para verificar su cuenta</div>");
-        }else if (url[7] === "rest"){
+        }else if (url[6] === "rest"){
             $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se ha cambiado satisfactoriamente su contraseña</div>");
         }
-    } else if (url[6] === "profile"){
-        if (url[7] === "done")
+    } else if (url[5] === "profile"){
+        if (url[6] === "done")
             $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Usuario correctamente actualizado</div>");
     }
 });

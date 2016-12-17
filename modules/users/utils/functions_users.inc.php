@@ -1,6 +1,46 @@
 <?php
 
-function validate_user($value){
+function validate_signupPHP($value){
+
+  $error = array();
+  $valid = true;
+  $filter = array(
+
+    'email' => array(
+      'filter'=>FILTER_CALLBACK,
+      'options'=>'validatemail'
+    ),
+
+    'password' => array(
+      'filter'=>FILTER_VALIDATE_REGEXP,
+      'options'=>array('regexp'=>'/^.{6,12}$/')
+    )
+  );
+
+  $result = filter_var_array($value, $filter);
+  $result['password2'] = $value['password2'];
+
+      if (!$result['email']) {
+          $error['email'] = 'Invalid email';
+          $result['email'] = $value['email'];
+          $valid = false;
+      }
+      if (!$result['password']) {
+          $error['password'] = 'Invalid password';
+          $result['password'] = $value['password'];
+          $valid = false;
+      }
+      if(!$result['password'] || $result['password']!=$result['password2'] ){
+          $error['password2'] = 'Invalid password repeat';
+          $result['password2'] = $value['password2'];
+          $valid = false;
+      }
+
+  return $return = array('result' => $valid, 'error' => $error, 'data' => $result);
+};//End validate user SIGN UP
+
+
+function validate_profilePHP($value){
 
   $error = array();
   $valid = true;
@@ -35,7 +75,8 @@ function validate_user($value){
     'password' => array(
       'filter'=>FILTER_VALIDATE_REGEXP,
       'options'=>array('regexp'=>'/^.{6,12}$/')
-    ),
+    )
+    ,
 
     'date_birthday' => array(
       'filter' => FILTER_VALIDATE_REGEXP,
@@ -141,7 +182,7 @@ function validate_user($value){
           $valid = false;
       }
   return $return = array('result' => $valid, 'error' => $error, 'data' => $result);
-};//End validate user
+}//End validate user
 
 function validate_dni($dni){
 	$letter = substr($dni, -1);
