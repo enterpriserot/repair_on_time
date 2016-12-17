@@ -29,7 +29,7 @@ class users_dao {
         $province = '';
         $city = '';
         $street = '';
-        $active = $arrArgument['activo'];
+        $active = $arrArgument['active'];
         $avatar = $arrArgument['avatar'];
         $token = $arrArgument['token'];
 
@@ -41,7 +41,7 @@ class users_dao {
                 . " '$surnames', '$mobile', '$email', '$password', '$date_birthday', "
                 . " '$type', '$country', '$province',"
                 . " '$city', '$street', '$avatar', '$token')";
-        
+
         return $db->ejecutar($sql);
 
     }//End create_users_dao

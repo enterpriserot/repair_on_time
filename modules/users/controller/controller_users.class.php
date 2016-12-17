@@ -28,7 +28,7 @@
 							'password' => password_hash($result['data']['password'], PASSWORD_BCRYPT),
 							'type' => "client",
 							'token' => "",
-							'activo' => "0",
+							'active' => "0",
 							'avatar' => $avatar
 					);
 
