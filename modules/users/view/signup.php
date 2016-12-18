@@ -4,6 +4,11 @@
 <form name="formusers" id="formusers" class="formusers">
     <br>
       <p>
+         <label for="name">Name:</label>
+         <input type="text" name="name" id="name" required="required" placeholder="Name"/>
+         <span id="error_name" class="styerror"></span>
+      </p>
+      <p>
         <label for="email">e-mail:</label>
         <input type="email" name="email" id="email" required="required" placeholder="email"/>
         <span id="error_email" class="styerror"></span>

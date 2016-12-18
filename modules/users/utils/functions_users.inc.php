@@ -5,6 +5,11 @@ function validate_signupPHP($value){
   $error = array();
   $valid = true;
   $filter = array(
+    'name' => array(
+      'filter'=>FILTER_VALIDATE_REGEXP,
+      // 'options'=>array('regexp'=>'/^\D{3,30}$/')
+      'options'=>array('regexp'=>'/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/')
+    ),
 
     'email' => array(
       'filter'=>FILTER_CALLBACK,
@@ -19,6 +24,11 @@ function validate_signupPHP($value){
 
   $result = filter_var_array($value, $filter);
   $result['password2'] = $value['password2'];
+      if (!$result['name']) {
+          $error['name'] = 'invalid name';
+          $result['name'] = $value['name'];
+          $valid = false;
+      }
 
       if (!$result['email']) {
           $error['email'] = 'Invalid email';

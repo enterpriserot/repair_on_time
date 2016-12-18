@@ -4,8 +4,15 @@ $(document).ready(function () {
       console.log("validate_user");
         validate_user();
     });
-    $("#email,#password, #password2").keyup(function () {
+    $("#name,#email,#password, #password2").keyup(function () {
         if ($(this).val() !== "") {
+            $(".error").fadeOut();
+            return false;
+        }
+    });
+
+    $("#name").keyup(function () {
+        if ($(this).val().length >= 2) {
             $(".error").fadeOut();
             return false;
         }
@@ -37,10 +44,10 @@ function validate_user() {
     var result = true;
     // var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var emailreg = /^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+.)+[A-Z]{2,4}$/i;
-    // var nomreg = /^\D{3,30}$/;
+    var nomreg = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
     // var apelreg = /^(\D{3,30})+$/;
     // var usuario = $("#inputUser").val();
-    // var nombre = $("#inputName").val();
+    var name = $("#name").val();
     // var apellidos = $("#inputSurn").val();
     var email = $("#email").val();
     var password = $("#password").val();
@@ -61,10 +68,10 @@ function validate_user() {
     if (!emailreg.test($("#email").val()) || $("#email").val() === "") {
         $("#email").focus().after("<span class='error'>Ingrese un email correcto</span>");
         result = false;
-    } /*else if ($("#inputName").val() === "" || !nomreg.test($("#inputName").val())) {
-        $("#inputName").focus().after("<span class='error'>Ingrese su nombre</span>");
+    } else if ($("#name").val() === "" || !nomreg.test($("#name").val())) {
+        $("#name").focus().after("<span class='error'>Ingrese su nombre</span>");
         result = false;
-    } else if ($("#inputName").val().length < 2) {
+    } /*else if ($("#inputName").val().length < 2) {
         $("#inputName").focus().after("<span class='error'>Mínimo 2 carácteres para el nombre</span>");
         result = false;
     } else if ($("#inputSurn").val() === "" || !apelreg.test($("#inputSurn").val())) {
@@ -90,7 +97,7 @@ function validate_user() {
     if (result) {
         // var data = {"usuario": usuario, "nombre": nombre, "apellidos": apellidos, "email": email,
         //     "password": password, "password2": password2, "date_birthday": date_birthday, "tipo": tipo, "bank": bank, "dni": dni};
-        var data = {"email": email, "password": password, "password2": password2};
+        var data = {"name": name, "email": email, "password": password, "password2": password2};
         var data_users_JSON = JSON.stringify(data);
         $.post(amigable("?module=users&function=signup_user"), {signup_user_json: data_users_JSON},
         function (response) {
@@ -104,9 +111,9 @@ function validate_user() {
                     // if (response["datos"]["usuario"] !== undefined && response["datos"]["usuario"] !== null) {
                     //     $("#inputUser").focus().after("<span class='error'>" + response["datos"]["usuario"] + "</span>");
                     // }
-                    // if (response["datos"]["nombre"] !== undefined && response["datos"]["nombre"] !== null) {
-                    //     $("#inputName").focus().after("<span class='error'>" + response["datos"]["nombre"] + "</span>");
-                    // }
+                    if (response["data"]["nombre"] !== undefined && response["data"]["name"] !== null) {
+                        $("#name").focus().after("<span class='error'>" + response["data"]["name"] + "</span>");
+                    }
                     if (response["data"]["email"] !== undefined && response["data"]["email"] !== null) {
                         $("#email").focus().after("<span class='error'>" + response["data"]["email"] + "</span>");
                     }

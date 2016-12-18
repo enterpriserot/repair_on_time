@@ -26,6 +26,7 @@
 				if ($result['result']) {
 					$avatar = get_gravatar($result['data']['email'], $s = 400, $d = 'identicon', $r = 'g', $img = false, $atts = array());
 					$arrArgument = array(
+							'name' => $result['data']['name'],
 							'email' => $result['data']['email'],
 							'password' => password_hash($result['data']['password'], PASSWORD_BCRYPT),
 							'type' => "client",
