@@ -73,16 +73,16 @@
         <uri>delete_avatar</uri>
     </function>
     <function>
-        <name>load_pais_user</name>
-        <uri>load_pais_user</uri>
+        <name>load_country_users</name>
+        <uri>load_country_users</uri>
     </function>
     <function>
-        <name>load_provincias_user</name>
-        <uri>load_provincias_user</uri>
+        <name>load_provinces_users</name>
+        <uri>load_provinces_users</uri>
     </function>
     <function>
-        <name>load_poblaciones_user</name>
-        <uri>load_poblaciones_user</uri>
+        <name>load_cities_users</name>
+        <uri>load_cities_users</uri>
     </function>
     <function>
         <name>social_signin</name>

@@ -407,9 +407,15 @@ $(document).ready(function () {
       $.post(amigable("?module=users&function=profile_filler"),{'email': user[0]},
           function( response ) {
               //alert(response.user);
+              console.log(response.user);
               if(response.success){
                   fill(response.user);
-                  load_countries_v2(response.user['country']);
+                  if (response.user['country'] === '') {
+                    console.log("country vacio");
+                    load_countries_v1();
+                  } else {
+                    load_countries_v2(response.user['country']);
+                  }
                   if(response.user['country'] === 'ES'){
                     $("#province").prop('disabled',false);
                     $("#city").prop('disabled',false);
@@ -507,7 +513,7 @@ $(document).ready(function () {
 			}
 		});
     //Dependent combos //////////////////////////////////
-    load_countries_v2("../../resources/ListOfCountryNamesByName.json");
+    // load_countries_v2("../../resources/ListOfCountryNamesByName.json");
     $("#province").empty();
     $("#province").append('<option value="" selected="selected">Select Province</option>');
     $("#province").prop('disabled', true);
@@ -559,39 +565,40 @@ function load_countries_v2(cad) {
       $("#country").empty();
       $("#country").append('<option value="" selected="selected">Select country</option>');
 
+
       $.each(data, function (i, valor) {
         $("#country").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
       });
     })
     .fail(function() {
-        alert( "error load_countries" );
+        alert( "error load_countries2" );
     });
 }
 
-function load_countries_v1(country) {
+function load_countries_v1() {
 
     // $.get( "index.php?module=users&function=load_country_users&load_country=true",
-    $.post("../../users/load_countries_users/",{ load_country:true },
+    $.post(amigable("?module=users&function=load_country_users&load_country=true"),
         function( response ) {
-            //alert(response);
-            //console.log("response: "+response);
+            // alert(response);
+            // console.log("response: "+response);
             if(response.match(/error/)){
-                //console.log("if de response error");
-                load_countries_v2("../../resources/ListOfCountryNamesByName.json",country);
+                // console.log("if de response error");
+                load_countries_v2("../../../resources/ListOfCountryNamesByName.json");
             }else{
-                //console.log("else de response error");
+                // console.log("else de response error");
                 // load_countries_v2("modules/users/controller/controller_users.class.php?load_pais=true"); //oorsprong.org
                 // load_countries_v2("index.php?module=users&function=load_country_users&load_country=true"); //oorsprong.org
-                load_countries_v2("../users/load_countries_users/",{ load_country:true }); //oorsprong.org
+                load_countries_v2(amigable("?module=users&function=load_country_users&load_country=true")); //oorsprong.org
             }
     })
     .fail(function(response) {
-        load_countries_v2("../../resources/ListOfCountryNamesByName.json");
+        load_countries_v2("../../../resources/ListOfCountryNamesByName.json");
     });
 }
 
 function load_provinces_v2() {
-    $.get("../../resources/provinciasypoblaciones.xml", function (xml) {
+    $.get("../../../resources/provinciasypoblaciones.xml", function (xml) {
       $("#province").empty();
 	    $("#province").append('<option value="" selected="selected">Select province</option>');
 
@@ -608,7 +615,7 @@ function load_provinces_v2() {
 
 function load_provinces_v1() { //provinciasypoblaciones.xml - xpath
 
-    $.post("../../users/load_provinces_users",{'load_provinces':true},
+    $.post(amigable("?module=users&function=load_provinces_users&load_provinces=true"),
         function( response ) {
           console.log("Response: "+response);
           $("#province").empty();
@@ -650,9 +657,9 @@ function load_cities_v2(prov) {
 function load_cities_v1(prov) { //provinciasypoblaciones.xml - xpath
     var datos = { idPoblac : prov  };
 
-  $.post("../../users/load_cities_users/", datos, function(response) {
+  $.post(amigable("?module=users&function=load_cities_users&load_cities=true"), datos, function(response) {
 	    //alert(response);
-        var json = JSON.parse(response);
+    var json = JSON.parse(response);
 		var cities=json.cities;
 
     $("#city").empty();

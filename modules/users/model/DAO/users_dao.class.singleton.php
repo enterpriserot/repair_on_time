@@ -150,13 +150,13 @@ class users_dao {
     }//End obtain_countries_dao
 
     public function obtain_provinces_dao(){
-          // $json = array();
-          // $json = "Estoy en obtain provinces dao";
-
+          $json = array();
+          
           $tmp = array();
 
-          $provincias = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");
-          $result = $provincias->xpath("/lista/provincia/nombre | /lista/provincia/@id");
+          $provinces = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");
+
+          $result = $provinces->xpath("/lista/provincia/nombre | /lista/provincia/@id");
           for ($i=0; $i<count($result); $i+=2) {
             $e=$i+1;
             $provincia=$result[$e];

@@ -254,7 +254,8 @@
 		}//End register_users
 
 		public function load_country_users(){
-			if(  (isset($_POST["load_country"])) && ($_POST["load_country"] == true)  ){
+			if(  (isset($_GET["param"])) && ($_GET["param"] == true)  ){
+
 						$json = array();
 
 						$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
@@ -280,7 +281,9 @@
 		}//Load country users
 
 		public function load_provinces_users(){
-			if(  (isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)  ){
+
+			if( (isset($_GET["param"])) && ($_GET["param"] == true)  ){
+
 				$jsondata = array();
 				$json = array();
 
@@ -305,7 +308,7 @@
 		}//End load provinces users
 
 		public function load_cities_users(){
-			if(  isset($_POST['idPoblac']) ){
+			if(  isset($_GET['param']) ){
 				$jsondata = array();
 				$json = array();
 
