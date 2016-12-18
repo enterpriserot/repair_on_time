@@ -108,6 +108,8 @@ class users_dao {
     }//End count_dao
 
     public function update_dao($db, $arrArgument){
+      // echo json_encode(count($arrArgument['field']));
+      // exit;
         $i = count($arrArgument['field']);
         $k = count($arrArgument['column']);
 
@@ -126,7 +128,8 @@ class users_dao {
         }
 
         $sql = $sql1 . $change . $sql2 . $sql;
-
+        // echo json_encode($sql);
+        // exit;
         return $db->ejecutar($sql);
 
     }//End update_dao
