@@ -115,6 +115,221 @@
     }
 		////////////////end signup////////////
 
+		///////////////profile///////////////
+		function profile() {
+        loadView('modules/users/view/', 'profile.php');
+    }
+
+    function upload_avatar() {
+        $result_avatar = upload_files();
+        $_SESSION['avatar'] = $result_avatar;
+    }
+
+    function delete_avatar() {
+        $_SESSION['avatar'] = array();
+        $result = remove_files();
+        if ($result === true) {
+            echo json_encode(array("res" => true));
+        } else {
+            echo json_encode(array("res" => false));
+        }
+    }
+
+    function profile_filler() {
+        if (isset($_POST['email'])) {
+            set_error_handler('ErrorHandler');
+            try {
+                $arrValue = loadModel(MODEL_USERS, "users_model", "select", array(column => array('email'), like => array($_POST['email']), field => array('*')));
+            } catch (Exception $e) {
+                $arrValue = false;
+            }
+            restore_error_handler();
+
+            if ($arrValue) {
+                $jsondata["success"] = true;
+                $jsondata['user'] = $arrValue[0];
+                echo json_encode($jsondata);
+                exit();
+            } else {
+                $url = amigable('?module=main', true);
+                $jsondata["success"] = false;
+                $jsondata['redirect'] = $url;
+                echo json_encode($jsondata);
+                exit();
+            }
+        } else {
+            $url = amigable('?module=main', true);
+            $jsondata["success"] = false;
+            $jsondata['redirect'] = $url;
+            echo json_encode($jsondata);
+            exit();
+        }
+    }
+
+		public function modify_users(){
+			if((isset($_POST["mod_users_json"]))){
+				$jsondata= array();
+				$usersJSON = json_decode($_POST["mod_users_json"], true);
+				$result = validate_user($usersJSON);
+
+				if($result['result']){
+						$arrArgument = array(
+								'dni' => $result['data']['dni'],
+								'name' => $result['data']['name'],
+								'surnames' => $result['data']['surnames'],
+								'mobile' => $result['data']['mobile'],
+								'email' => $result['data']['email'],
+								'password' => password_hash($result['data']['password'], PASSWORD_BCRYPT),
+								'date_birthday' => $result['data']['date_birthday'],
+								'type' => $result['data']['type'],
+								'country' => $result['data']['country'],
+								'province' => $result['data']['province'],
+								'city' => $result['data']['city'],
+								'street' => $result['data']['street'],
+								'avatar' => $SESSION['avatar']['data']
+						);
+
+						$arratData = array(
+								column => array(
+										'email'
+								),
+								like => array(
+										$arrArgument['email']
+								)
+						);
+
+						$j = 0;
+            foreach ($arrArgument as $clave => $valor) {
+                if ($valor != "") {
+                    $arrayDatos['field'][$j] = $clave;
+                    $arrayDatos['new'][$j] = $valor;
+                    $j++;
+                }
+            }
+
+						set_error_handler('ErrorHandler');
+						try{
+								$arrValue = loadModel(MODEL_USERS, "users_model", "update", $arrArgument);
+						}catch (Exception $e){
+								$arrValue = false;
+						}
+						restore_error_handler();
+
+						if($arrValue){
+								$message="User registration correct, please verify your email using the mail validation instructions";
+								$callback = "../../users/results_users/";
+						}else{
+								$message="An error occurred during the registration process, please try angain later";
+								$callback = "../../error/error/";
+						}
+								// $_SESSION['user']=$arrArgument;
+								$_SESSION['user']=$arrArgument;
+								$_SESSION['message']=$message;
+
+								// $callback = "../../users/results_user/";
+								// $callback="index.php?module=users&function=result_users";
+
+								$jsondata['success'] = true;
+								$jsondata['redirect'] = $callback;
+								echo json_encode($jsondata);
+								exit;
+
+				}else{
+						$jsondata["success"] = false;
+						$jsondata["error"] = $result['error'];
+						$jsondata["error_avatar"] = $result_avatar['error'];
+
+						$jsondata["success1"] = false;
+						if($result_avatar['result']){
+								$jsondata['success1'] = true;
+								$jsondata["img_avatar"] = $result_avatar['data'];
+						}
+
+						header('HTTP/1.0 404 Not Found', true, 404);
+						echo json_encode($jsondata);
+						//exit;
+				}
+			}
+		}//End register_users
+
+		public function load_country_users(){
+			if(  (isset($_POST["load_country"])) && ($_POST["load_country"] == true)  ){
+						$json = array();
+
+						$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
+
+
+						set_error_handler('ErrorHandler');
+						try{
+								$json = loadModel(MODEL_USERS, "users_model", "obtain_countries", $url);
+						}catch(Exception $e){
+								$json = array();
+						}
+						restore_error_handler();
+
+						if($json){
+							echo $json;
+							exit;
+						}else{
+							$json = "error";
+							echo $json;
+							exit;
+						}
+			}
+		}//Load country users
+
+		public function load_provinces_users(){
+			if(  (isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)  ){
+				$jsondata = array();
+				$json = array();
+
+				set_error_handler('ErrorHandler');
+				try{
+						$json = loadModel(MODEL_USERS, "users_model", "obtain_provinces");
+				}catch(Exception $e){
+						$json = array();
+				}
+				restore_error_handler();
+
+				if($json){
+					$jsondata["provinces"] = $json;
+					echo json_encode($jsondata);
+					exit;
+				}else{
+					$jsondata["provinces"] = "error";
+					echo json_encode($jsondata);
+					exit;
+				}
+			}
+		}//End load provinces users
+
+		public function load_cities_users(){
+			if(  isset($_POST['idPoblac']) ){
+				$jsondata = array();
+				$json = array();
+
+				set_error_handler('ErrorHandler');
+				try{
+						$json = loadModel(MODEL_USERS, "users_model", "obtain_cities", $_POST['idPoblac']);
+				}catch (Exception $e){
+						$json = array();
+				}
+				restore_error_handler();
+
+				if($json){
+					$jsondata["cities"] = $json;
+					echo json_encode($jsondata);
+					exit;
+				}else{
+					$jsondata["cities"] = "error";
+					echo json_encode($jsondata);
+					exit;
+				}
+			}
+		}//End load cities users
+
+		//////////////profile end///////////
+
 		//////////////begin restore////////////
     function restore() {
         loadView('modules/users/view/', 'restore.php');

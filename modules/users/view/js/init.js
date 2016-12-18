@@ -21,7 +21,7 @@ $(document).ready(function () {
     if (user) {
         console.log(user); //
         user = user.split("|");
-        $("#LogProf").html("<a href=" + amigable('?module=user&function=profile') + "><img id='menuImg' class='icon rounded' src='" + user[1] + "'\/>" + user[3] + "<\/a>");
+        $("#LogProf").html("<a href=" + amigable('?module=users&function=profile') + "><img id='menuImg' class='icon rounded' src='" + user[1] + "'\/>" + user[3] + "<\/a>");
         $("#LogProf").after("<li><a id='logout' href='#' >Log Out<\/a><\/li>");
         if ( (user[2] === "worker") || (user[2] === "client")  ) {
             $("#LogProf").before("<li><a href=" + amigable('?module=ofertas/') + ">My tickets<\/a><\/li>");
