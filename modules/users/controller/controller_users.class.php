@@ -171,7 +171,7 @@
 			if((isset($_POST["mod_users_json"]))){
 				$jsondata= array();
 				$usersJSON = json_decode($_POST["mod_users_json"], true);
-				$result = validate_user($usersJSON);
+				$result = validate_profilePHP($usersJSON);
 
 				if($result['result']){
 						$arrArgument = array(
@@ -182,7 +182,7 @@
 								'email' => $result['data']['email'],
 								'password' => password_hash($result['data']['password'], PASSWORD_BCRYPT),
 								'date_birthday' => $result['data']['date_birthday'],
-								'type' => $result['data']['type'],
+								'type' => 'client',
 								'country' => $result['data']['country'],
 								'province' => $result['data']['province'],
 								'city' => $result['data']['city'],
@@ -202,56 +202,42 @@
 						$j = 0;
             foreach ($arrArgument as $clave => $valor) {
                 if ($valor != "") {
-                    $arrayDatos['field'][$j] = $clave;
-                    $arrayDatos['new'][$j] = $valor;
+                    $arratData['field'][$j] = $clave;
+                    $arratData['new'][$j] = $valor;
                     $j++;
                 }
             }
 
+						// echo json_encode($arratData);
+						// exit;
+
 						set_error_handler('ErrorHandler');
 						try{
-								$arrValue = loadModel(MODEL_USERS, "users_model", "update", $arrArgument);
+								$arrValue = loadModel(MODEL_USERS, "users_model", "update", $arratData);
 						}catch (Exception $e){
 								$arrValue = false;
 						}
 						restore_error_handler();
 
 						if($arrValue){
-								$message="User registration correct, please verify your email using the mail validation instructions";
-								$callback = "../../users/results_users/";
-						}else{
-								$message="An error occurred during the registration process, please try angain later";
-								$callback = "../../error/error/";
-						}
-								// $_SESSION['user']=$arrArgument;
-								$_SESSION['user']=$arrArgument;
-								$_SESSION['message']=$message;
-
-								// $callback = "../../users/results_user/";
-								// $callback="index.php?module=users&function=result_users";
-
 								$jsondata['success'] = true;
-								$jsondata['redirect'] = $callback;
+								$url = amigable('?module=users&function=profile&param=done',true);
+								$jsondata['redirect'] = $url;
 								echo json_encode($jsondata);
 								exit;
-
+						}else{
+								$jsondata['success'] = false;
+								$url = amigable('?module=users&function=profile&param=503',true);
+								$jsondata["redirect"] = $url;
+								echo json_encode($jsondata);
+						}
 				}else{
 						$jsondata["success"] = false;
 						$jsondata["error"] = $result['error'];
-						$jsondata["error_avatar"] = $result_avatar['error'];
-
-						$jsondata["success1"] = false;
-						if($result_avatar['result']){
-								$jsondata['success1'] = true;
-								$jsondata["img_avatar"] = $result_avatar['data'];
-						}
-
-						header('HTTP/1.0 404 Not Found', true, 404);
 						echo json_encode($jsondata);
-						//exit;
+						}
 				}
-			}
-		}//End register_users
+		}//End modify_users
 
 		public function load_country_users(){
 			if(  (isset($_POST["load_country"])) && ($_POST["load_country"] == true)  ){

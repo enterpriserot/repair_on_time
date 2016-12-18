@@ -57,8 +57,8 @@
         <uri>profile</uri>
     </function>
     <function>
-        <name>modify</name>
-        <uri>modify</uri>
+        <name>modify_users</name>
+        <uri>modify_users</uri>
     </function>
     <function>
         <name>profile_filler</name>
