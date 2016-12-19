@@ -1,0 +1,47 @@
+[1mdiff --git a/modules/users/model/DAO/users_dao.class.singleton.php b/modules/users/model/DAO/users_dao.class.singleton.php[m
+[1mindex 392e304..e3fb8d8 100755[m
+[1m--- a/modules/users/model/DAO/users_dao.class.singleton.php[m
+[1m+++ b/modules/users/model/DAO/users_dao.class.singleton.php[m
+[36m@@ -108,6 +108,8 @@[m [mclass users_dao {[m
+     }//End count_dao[m
+ [m
+     public function update_dao($db, $arrArgument){[m
+[32m+[m[32m        // echo json_encode(count($arrArgument['field']));[m
+[32m+[m[32m        // exit;[m
+         $i = count($arrArgument['field']);[m
+         $k = count($arrArgument['column']);[m
+ [m
+[36m@@ -126,7 +128,8 @@[m [mclass users_dao {[m
+         }[m
+ [m
+         $sql = $sql1 . $change . $sql2 . $sql;[m
+[31m-[m
+[32m+[m[32m        // echo json_encode($sql);[m
+[32m+[m[32m        // exit;[m
+         return $db->ejecutar($sql);[m
+ [m
+     }//End update_dao[m
+[36m@@ -151,11 +154,9 @@[m [mclass users_dao {[m
+ [m
+     public function obtain_provinces_dao(){[m
+           $json = array();[m
+[31m-          [m
+           $tmp = array();[m
+ [m
+           $provinces = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");[m
+[31m-[m
+           $result = $provinces->xpath("/lista/provincia/nombre | /lista/provincia/@id");[m
+           for ($i=0; $i<count($result); $i+=2) {[m
+             $e=$i+1;[m
+[1mdiff --git a/view/js/main.js b/view/js/main.js[m
+[1mindex b6e3053..28c7cf0 100755[m
+[1m--- a/view/js/main.js[m
+[1m+++ b/view/js/main.js[m
+[36m@@ -19,7 +19,6 @@[m [mfunction amigable(url) {[m
+         var aux = url[i].split("=");[m
+         link +=  "/"+aux[1];[m
+     }[m
+[31m-    console.log("http://localhost/repair_on_time" + link);[m
+     return "http://localhost/repair_on_time" + link;[m
+     //return "http://arevert.tk/repair_on_time" + link;[m
+     // return "https://projects-alumnes-yomogan.c9users.io/proj_final_login/JoinElderly" + link;[m

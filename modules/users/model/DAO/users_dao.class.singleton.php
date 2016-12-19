@@ -108,6 +108,8 @@ class users_dao {
     }//End count_dao
 
     public function update_dao($db, $arrArgument){
+        // echo json_encode(count($arrArgument['field']));
+        // exit;
         $i = count($arrArgument['field']);
         $k = count($arrArgument['column']);
 
@@ -126,7 +128,8 @@ class users_dao {
         }
 
         $sql = $sql1 . $change . $sql2 . $sql;
-
+        // echo json_encode($sql);
+        // exit;
         return $db->ejecutar($sql);
 
     }//End update_dao
@@ -151,11 +154,9 @@ class users_dao {
 
     public function obtain_provinces_dao(){
           $json = array();
-          
           $tmp = array();
 
           $provinces = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");
-
           $result = $provinces->xpath("/lista/provincia/nombre | /lista/provincia/@id");
           for ($i=0; $i<count($result); $i+=2) {
             $e=$i+1;
