@@ -273,7 +273,7 @@ function validate_profile_user() {
         $.post(amigable('?module=users&function=modify_users'), { mod_users_json: data_users_json },
 
             function (response) {
-              console.log("response PHP: "+response);
+              console.log(response);
               console.log(response.redirect);
                 if(response.success){
                     window.location.href=response.redirect;
@@ -410,6 +410,7 @@ $(document).ready(function () {
               console.log(response.user);
               if(response.success){
                   fill(response.user);
+
                   if (response.user['country'] === '') {
                     console.log("country vacio");
                     load_countries_v1();
@@ -578,13 +579,17 @@ function load_countries_v2(cad) {
 function load_countries_v1() {
 
     // $.get( "index.php?module=users&function=load_country_users&load_country=true",
+
     $.post(amigable("?module=users&function=load_country_users&load_country=true"),
+
         function( response ) {
             // alert(response);
             // console.log("response: "+response);
             if(response.match(/error/)){
+
                 // console.log("if de response error");
                 load_countries_v2("../../../resources/ListOfCountryNamesByName.json");
+
             }else{
                 // console.log("else de response error");
                 // load_countries_v2("modules/users/controller/controller_users.class.php?load_pais=true"); //oorsprong.org
@@ -598,6 +603,7 @@ function load_countries_v1() {
 }
 
 function load_provinces_v2() {
+
     $.get("../../../resources/provinciasypoblaciones.xml", function (xml) {
       $("#province").empty();
 	    $("#province").append('<option value="" selected="selected">Select province</option>');
@@ -639,7 +645,7 @@ function load_provinces_v1() { //provinciasypoblaciones.xml - xpath
 
 function load_cities_v2(prov) {
     // $.get("resources/provinciasypoblaciones.xml", function (xml) {
-    $.get("../../resources/provinciasypoblaciones.xml", function (xml) {
+    $.get("../resources/provinciasypoblaciones.xml", function (xml) {
       $("#city").empty();
   	  $("#city").append('<option value="" selected="selected">Select city</option>');
 
