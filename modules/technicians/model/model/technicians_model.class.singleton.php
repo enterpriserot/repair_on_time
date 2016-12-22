@@ -34,4 +34,8 @@ class technicians_model {
         //return "hola";
         return $this->bll->select_bll($arrArgument);
     }
+
+    public function select_near($arrArgument) {
+        return $this->bll->select_near_bll($arrArgument);
+    }
 }

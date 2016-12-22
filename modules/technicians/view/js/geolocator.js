@@ -138,7 +138,8 @@ function loadmap(arrArguments) {
         //mapholder.style.height = '550px';
         //mapholder.style.width = '900px';
         var myOptions = {
-            center: latlon, zoom: 10,
+            center: latlon,
+            zoom: 10,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
             navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}

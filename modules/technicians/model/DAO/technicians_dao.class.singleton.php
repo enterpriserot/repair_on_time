@@ -90,6 +90,32 @@ class technicians_dao {
 
     }
 
+    public function select_near_dao($db, $arrArgument){
+
+      $lat = "38.821991";//$arrArgument['latitude'];
+      $lng = "-0.601544";//$arrArgument['longitude'];
+      $distance = "4";//$arrArgument['distance'];
+      $box = getBoundaries($lat, $lng, $distance);
+      echo json_encode("HOLA");
+      exit;
+
+      $sql= ('SELECT *, (6371 * ACOS(
+                                    SIN(RADIANS(lat))
+                                    * SIN(RADIANS(' . $lat . '))
+                                    + COS(RADIANS(lng - ' . $lng . '))
+                                    * COS(RADIANS(lat))
+                                    * COS(RADIANS(' . $lat . '))
+                                    )
+                          ) AS distance
+               FROM direcciones
+               WHERE (lat BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
+               AND (lng BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
+               HAVING distance  < ' . $distance . '
+               ORDER BY distance ASC ');
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+    }
+
     public function update_dao($db, $arrArgument) {
         /*
          * @param= $arrArgument( column => array(colum),

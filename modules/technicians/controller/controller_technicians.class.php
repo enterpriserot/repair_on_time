@@ -11,7 +11,8 @@ class controller_technicians {
       // exit;
         set_error_handler('ErrorHandler');
         try {
-            $arrValue = loadModel(MODEL_TECHNICIANS, "technicians_model", "select", array('column' => array('false'), 'field' => array('*')));
+            // $arrValue = loadModel(MODEL_TECHNICIANS, "technicians_model", "select", array('column' => array('false'), 'field' => array('*')));
+            $arrValue = loadModel(MODEL_TECHNICIANS, "technicians_model", "select_near");
             /*echo json_encode($arrValue);
             exit;*/
         } catch (Exception $e) {
