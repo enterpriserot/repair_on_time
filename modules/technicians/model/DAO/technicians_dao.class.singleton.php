@@ -92,26 +92,27 @@ class technicians_dao {
 
     public function select_near_dao($db, $arrArgument){
 
-      $lat = "38.821991";//$arrArgument['latitude'];
-      $lng = "-0.601544";//$arrArgument['longitude'];
-      $distance = "4";//$arrArgument['distance'];
+      $lat = $arrArgument['latitude'];//38.821991;
+      $lng = $arrArgument['longitude'];//-0.601544;
+      $distance = $arrArgument['distance'];//10;
       $box = getBoundaries($lat, $lng, $distance);
-      echo json_encode("HOLA");
-      exit;
+      // echo json_encode($box);
+      // exit;
 
       $sql= ('SELECT *, (6371 * ACOS(
-                                    SIN(RADIANS(lat))
+                                    SIN(RADIANS(latitude))
                                     * SIN(RADIANS(' . $lat . '))
-                                    + COS(RADIANS(lng - ' . $lng . '))
-                                    * COS(RADIANS(lat))
+                                    + COS(RADIANS(longitude - ' . $lng . '))
+                                    * COS(RADIANS(latitude))
                                     * COS(RADIANS(' . $lat . '))
                                     )
                           ) AS distance
-               FROM direcciones
-               WHERE (lat BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
-               AND (lng BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
+               FROM technicians
+               WHERE (latitude BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
+               AND (longitude BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
                HAVING distance  < ' . $distance . '
                ORDER BY distance ASC ');
+
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }
