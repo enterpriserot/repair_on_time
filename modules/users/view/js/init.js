@@ -39,17 +39,48 @@ $(document).ready(function () {
     var url = window.location.href;
     url = url.split("/");
     if (url[5] === 'verify' && url[6].substring(0, 3) == 'Ver'){
-        $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Su email ha sido verificado, disfrute de nuestros servicios</div>");
+      $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Su email ha sido verificado, disfrute de nuestros servicios</div>");
+      $("#alertbanner").addClass('active');
+      $("#alertbanner").addClass('drop-notif-green');
+      setTimeout(function(){
+        $('.dropdown-notification').removeClass('active');
+        $("#alertbanner").removeClass('drop-notif-green');
+      }, 10000);
     }else if(url[6]==='503'){
-         $("#alertbanner").html("<a href='#alertbanner' class='alertbanner alertbannerErr'>Hay un problema en la base de datos, inténtelo más tarde</div>");
+      $("#alertbanner").html("<a href='#alertbanner' class='alertbanner alertbannerErr'>Hay un problema en la base de datos, inténtelo más tarde</div>");
+      $("#alertbanner").addClass('active');
+      $("#alertbanner").addClass('drop-notif-red');
+      setTimeout(function(){
+        $('.dropdown-notification').removeClass('active');
+        $("#alertbanner").removeClass('drop-notif-red');
+      }, 10000);
     }else if (url[5] === 'begin') {
         if (url[6] === 'reg'){
-            $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se le ha enviado un email para verificar su cuenta</div>");
+          $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se le ha enviado un email para verificar su cuenta</div>");
+          $("#alertbanner").addClass('active');
+          $("#alertbanner").addClass('drop-notif-green');
+          setTimeout(function(){
+            $('.dropdown-notification').removeClass('active');
+            $("#alertbanner").removeClass('drop-notif-green');
+          }, 10000);
         }else if (url[6] === 'rest'){
-            $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se ha cambiado satisfactoriamente su contraseña</div>");
+          $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Se ha cambiado satisfactoriamente su contraseña</div>");
+          $("#alertbanner").addClass('active');
+          $("#alertbanner").addClass('drop-notif-green');
+          setTimeout(function(){
+            $('.dropdown-notification').removeClass('active');
+            $("#alertbanner").removeClass('drop-notif-green');
+          }, 10000);
         }
     } else if (url[5] === 'profile'){
-        if (url[6] === 'done')
+        if (url[6] === 'done'){
             $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>Usuario correctamente actualizado</div>");
+            $("#alertbanner").addClass('active');
+            $("#alertbanner").addClass('drop-notif-green');
+            setTimeout(function(){
+              $('.dropdown-notification').removeClass('active');
+              $("#alertbanner").removeClass('drop-notif-green');
+            }, 10000);
+        }
     }
 });

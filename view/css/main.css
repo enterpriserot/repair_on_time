@@ -255,3 +255,22 @@ input[type="file"] {
         margin-bottom: 10%;
     		background-color: white;
     }
+    /*----------------Alert Banner------------------------*/
+    .dropdown-notification {
+        z-index:4;
+        text-align: center;
+   		  height: 22px;
+		    line-height: 20px;
+		    position: relative;
+		    top: -40px;
+		    transition: top .2s;
+     }
+     .drop-notif-green{
+        background-color: #34d834;
+     }
+     .drop-notif-red{
+        background-color: #e6adad;
+     }
+     .dropdown-notification.active {
+        top: 0;
+     }

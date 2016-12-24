@@ -50,7 +50,6 @@
         Enterprise <input name="type" id="type" type="radio" value="enterprise">
       </p>
       <p>
-        <label for="address">Adress:</label>
         <label for="country">Country:</label>
         <select name="country" id="country">
         <option selected>Select country</option>
