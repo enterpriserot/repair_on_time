@@ -149,10 +149,10 @@ function validate_profile_user() {
   	var v_dni = validate_dni(dni);
   	var v_name = validate_name(name);
   	var v_surnames = validate_surnames(surnames);
-    var v_mobile = validate_mobile(mobile);
+    // var v_mobile = validate_mobile(mobile);
   	var v_email = validate_email(email);
-  	var v_password = validate_password(password);
-  	var v_password2 = validate_password2(password, password2);
+  	// var v_password = validate_password(password);
+  	// var v_password2 = validate_password2(password, password2);
   	var v_date_birthday = validate_date_birthday(date_birthday);
   	var v_country = validate_country(country);
   	var v_province = validate_province(province);
@@ -180,12 +180,12 @@ function validate_profile_user() {
           document.getElementById('error_surnames').innerHTML = "";
     }
 
-    if (!v_mobile) {
-          document.getElementById('error_mobile').innerHTML = "Invalid mobile number must start with 6/7/9";
-          result = false;
-      } else {
-          document.getElementById('error_mobile').innerHTML = "";
-    }
+    // if (!v_mobile) {
+    //       document.getElementById('error_mobile').innerHTML = "Invalid mobile number must start with 6/7/9";
+    //       result = false;
+    //   } else {
+    //       document.getElementById('error_mobile').innerHTML = "";
+    // }
 
   	if (!v_email) {
           document.getElementById('error_email').innerHTML = "Invalid email value";
@@ -194,19 +194,19 @@ function validate_profile_user() {
           document.getElementById('error_email').innerHTML = "";
     }
 
-  	if (!v_password) {
-          document.getElementById('error_password').innerHTML = "Password must have 6 chars/numbers";
-          result = false;
-      } else {
-          document.getElementById('error_password').innerHTML = "";
-    }
-
-  	if (!v_password2) {
-          document.getElementById('error_password2').innerHTML = "Passwords don't match";
-          result = false;
-      } else {
-          document.getElementById('error_password2').innerHTML = "";
-    }
+  	// if (!v_password) {
+    //       document.getElementById('error_password').innerHTML = "Password must have 6 chars/numbers";
+    //       result = false;
+    //   } else {
+    //       document.getElementById('error_password').innerHTML = "";
+    // }
+    //
+  	// if (!v_password2) {
+    //       document.getElementById('error_password2').innerHTML = "Passwords don't match";
+    //       result = false;
+    //   } else {
+    //       document.getElementById('error_password2').innerHTML = "";
+    // }
 
     if (!v_date_birthday) {
         document.getElementById('error_date_birthday').innerHTML = "Incorrect birth date";

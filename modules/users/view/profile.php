@@ -44,11 +44,11 @@
         <input type="text" name="date_birthday" id="date_birthday" placeholder="Birthday"/>
         <span id="error_date_birthday" class="styerror"></span>
       </p>
-      <p>
+      <!-- <p>
         <label for="user_type">Type:</label>
         Individual <input name="type" id="type" type="radio" value="individual" checked>
         Enterprise <input name="type" id="type" type="radio" value="enterprise">
-      </p>
+      </p> -->
       <p>
         <label for="country">Country:</label>
         <select name="country" id="country">
