@@ -131,7 +131,7 @@ function validate_street(street) {
 function validate_profile_user() {
     var result = true;
 
-    console.log("validate_profile_user");
+    // console.log("validate_profile_user");
     var dni = $('#dni').val();
   	var name = $('#name').val();
   	var surnames = $('#surnames').val();
@@ -149,10 +149,10 @@ function validate_profile_user() {
   	var v_dni = validate_dni(dni);
   	var v_name = validate_name(name);
   	var v_surnames = validate_surnames(surnames);
-    // var v_mobile = validate_mobile(mobile);
+    var v_mobile = validate_mobile(mobile);
   	var v_email = validate_email(email);
-  	// var v_password = validate_password(password);
-  	// var v_password2 = validate_password2(password, password2);
+  	var v_password = validate_password(password);
+  	var v_password2 = validate_password2(password, password2);
   	var v_date_birthday = validate_date_birthday(date_birthday);
   	var v_country = validate_country(country);
   	var v_province = validate_province(province);
@@ -160,87 +160,87 @@ function validate_profile_user() {
     var v_street = validate_street(street);
 
     if (!v_dni) {
-          document.getElementById('error_dni').innerHTML = "Invalid input DNI";
+          $('#error_dni').text("Invalid input DNI");
           result = false;
       } else {
-          document.getElementById('error_dni').innerHTML = "";
+          $('#error_dni').text("");
     }
 
   	if (!v_name) {
-          document.getElementById('error_name').innerHTML = "Invalid input name";
+          $('#error_name').text("Invalid input name");
           result = false;
       } else {
-          document.getElementById('error_name').innerHTML = "";
+          $('#error_name').text("");
     }
 
   	if (!v_surnames) {
-          document.getElementById('error_surnames').innerHTML = "Invalid input surnames";
+          $('#error_surnames').text("Invalid input surnames");
           result = false;
       } else {
-          document.getElementById('error_surnames').innerHTML = "";
+          $('#error_surnames').text("");
     }
 
-    // if (!v_mobile) {
-    //       document.getElementById('error_mobile').innerHTML = "Invalid mobile number must start with 6/7/9";
-    //       result = false;
-    //   } else {
-    //       document.getElementById('error_mobile').innerHTML = "";
-    // }
+    if (mobile !== "" && !v_mobile) {
+          $('#error_mobile').text("Invalid mobile number must start with 6/7/9");
+          result = false;
+      } else {
+          $('#error_mobile').text("");
+    }
 
   	if (!v_email) {
-          document.getElementById('error_email').innerHTML = "Invalid email value";
+          $('#error_email').text("Invalid email value");
           result = false;
       } else {
-          document.getElementById('error_email').innerHTML = "";
+          $('#error_email').text("");
     }
 
-  	// if (!v_password) {
-    //       document.getElementById('error_password').innerHTML = "Password must have 6 chars/numbers";
-    //       result = false;
-    //   } else {
-    //       document.getElementById('error_password').innerHTML = "";
-    // }
-    //
-  	// if (!v_password2) {
-    //       document.getElementById('error_password2').innerHTML = "Passwords don't match";
-    //       result = false;
-    //   } else {
-    //       document.getElementById('error_password2').innerHTML = "";
-    // }
+  	if (!v_password && password !== "") {
+          $('#error_password').text("Password must have 6 chars/numbers");
+          result = false;
+    } else {
+          $('#error_password').text("");
+    }
+
+  	if (!v_password2 && password2 !== "") {
+          $('#error_password2').text("Passwords don't match");
+          result = false;
+      } else {
+          $('#error_password2').text("");
+    }
 
     if (!v_date_birthday) {
-        document.getElementById('error_date_birthday').innerHTML = "Incorrect birth date";
+        $('#error_date_birthday').text("Incorrect birth date");
         result = false;
     } else {
-        document.getElementById('error_date_birthday').innerHTML = "";
+        $('#error_date_birthday').text("");
     }
 
     if (!v_country) {
-        document.getElementById('error_country').innerHTML = "Select one Country";
+        $('#error_country').text("Select one Country");
         result = false;
     } else {
-        document.getElementById('error_country').innerHTML = "";
+        $('#error_country').text("");
     }
 
     if (!v_province) {
-        document.getElementById('error_province').innerHTML = "Select Province";
+        $('#error_province').text("Select Province");
         result = false;
     } else {
-        document.getElementById('error_province').innerHTML = "";
+        $('#error_province').text("");
     }
 
     if (!v_city) {
-        document.getElementById('error_city').innerHTML = "Select one city";
+        $('#error_city').text("Select one city");
         result = false;
     } else {
-        document.getElementById('error_city').innerHTML = "";
+        $('#error_city').text("");
     }
 
     if (!v_street) {
-        document.getElementById('error_street').innerHTML = "Invalida street";
+        $('#error_street').text("Invalida street");
         result = false;
     } else {
-        document.getElementById('error_street').innerHTML = "";
+        $('#error_street').text("");
     }
 
     if (result) {

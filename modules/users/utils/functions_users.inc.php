@@ -146,26 +146,27 @@ function validate_profilePHP($value){
           $result['surnames'] = $value['surnames'];
           $valid = false;
       }
-      // if (!$result['mobile']) {
-      //     $error['mobile'] = 'Invalid mobile must be +34xxxxxxxxx';
-      //     $result['mobile'] = $value['mobile'];
-      //     $valid = false;
-      // }
+      if($value['mobile'] !== "" && !$result['mobile']){
+          $error['mobile'] = 'Invalid mobile number must start with 6/7/9';
+          $result['mobile'] = $value['mobile'];
+          $valid = false;
+      }
       if (!$result['email']) {
           $error['email'] = 'Invalid email';
           $result['email'] = $value['email'];
           $valid = false;
       }
-      // if (!$result['password']) {
-      //     $error['password'] = 'Invalid password';
-      //     $result['password'] = $value['password'];
-      //     $valid = false;
-      // }
-      // if(!$result['password'] || $result['password']!=$result['password2'] ){
-      //     $error['password'] = 'Invalid password repeat';
-      //     $result['password'] = $value['password'];
-      //     $valid = false;
-      // }
+      if($value['password'] !== "" && !$result['password']){
+          $error['password'] = 'Invalid password';
+          $result['password'] = $value['password'];
+          $valid = false;
+      }
+
+      if((!$result['password'] || $result['password']!=$result['password2']) && $value['password2'] !== "" ){
+          $error['password'] = 'Invalid password repeat';
+          $result['password'] = $value['password'];
+          $valid = false;
+      }
       if (!$result['date_birthday']) {
           $error['date_birthday'] = 'Invalid date birthday';
           $result['date_birthday'] = $value['date_birthday'];
