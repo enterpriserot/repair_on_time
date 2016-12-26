@@ -1,5 +1,6 @@
 $(document).ready(start);
-//console.log("ready");
+console.log("ready");
+console.log($_SESSION['location']);
 
 function start() {
 

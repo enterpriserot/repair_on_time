@@ -81,3 +81,6 @@ define('CONTACT_VIEW_PATH', 'modules/contact/view/');
 define('TECHNICIANS_JS_PATH',SITE_PATH. 'modules/technicians/view/js/');
 define('TECHNICIANS_CSS_PATH', SITE_PATH . 'modules/technicians/view/css/');
 define('MODEL_TECHNICIANS', SITE_ROOT . 'modules/technicians/model/model/');
+
+///MODULE main
+define('MAIN_JS_PATH',SITE_PATH.'modules/main/view/js/');

@@ -1,3 +1,5 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCviZ569vHIB8lmT5PlDENQ9eLHNpNBYtc&libraries=places" async defer></script>
+<script src="<?php echo MAIN_JS_PATH ?>search.js"></script>
 <header id="first">
     <div class="header-content">
         <div class="inner">
@@ -5,8 +7,8 @@
             <hr>
             <!--<h4>A free landing page theme with video background</h4>-->
             <section class="search">
-              <input type="text" name="search-box" class="search-box" value="Search..." placeholder="Search...">
-              <input type="button" name="search-button" class="btn btn-primary btn-xl" value="Search">
+              <input type="text" id="searchBox" name="search-box" class="search-box" autocomplete="on" placeholder="Search...">
+              <input type="button" id="searchButton" name="search-button" class="btn btn-primary btn-xl" value="Search">
             </section>
             <hr>
             <a href="#video-background" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">Toggle Video</a> &nbsp; <a href="#one" class="btn btn-primary btn-xl page-scroll">Get Started</a>
