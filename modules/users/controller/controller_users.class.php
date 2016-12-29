@@ -462,8 +462,8 @@
                         'like' => array($user['email'], "1")
                     );
                     $arrValue = loadModel(MODEL_USERS, "users_model", "count", $arrArgument);
-										// echo json_encode($arrValue[0]);
-										// exit;
+										echo json_encode($arrValue[0]);
+										exit;
                     if ($arrValue[0]["total"] == 1) {
                         $arrArgument = array(
                             'column' => array("email"),

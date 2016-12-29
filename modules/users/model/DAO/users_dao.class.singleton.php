@@ -95,8 +95,8 @@ class users_dao {
             $sql .= $arrArgument['column'][$j] . " like '" . $arrArgument['like'][$j] . "'";
         }
 
-        // echo json_encode($sql);
-        // exit;
+        echo json_encode($sql);
+        exit;
         $stmt = $db->ejecutar($sql);
         // echo json_encode($db->listar($stmt));
         // exit;

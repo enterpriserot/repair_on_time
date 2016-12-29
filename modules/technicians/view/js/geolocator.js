@@ -1,23 +1,27 @@
 $(document).ready(start);
-console.log("ready");
-console.log($_SESSION['location']);
 
 function start() {
+    lat = Tools.readCookie("lat");
+    lng = Tools.readCookie("lng");
+    if (lat && lng) {
+      var data = {"lat": lat, "lng": lng};
+      var change_JSON = JSON.stringify(data);
+    }
 
     // console.log(amigable("?module=technicians&function=maploader"));
-    $.post(amigable("?module=technicians&function=maploader"), {value: {send: true}},
+    $.post(amigable("?module=technicians&function=maploader"), {value: change_JSON},
 
     function (response) {
       console.log(response);
         console.log(response.technicians);
         if (response.success) {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(mostrarUbicacion);
                 loadmap(response.technicians);
                 loadtechnicians(response.technicians);
-            } else {
-                alert("¡Error! Este navegador no soporta la Geolocalización.");
-            }
+            // } else {
+            //     alert("¡Error! Este navegador no soporta la Geolocalización.");
+            // }
         } else {
             if (response.error == 503)
                 window.location.href = amigable("?module=main&fn=begin&param=503");
@@ -52,8 +56,8 @@ function mostrarUbicacion(position) {
 
     //setCookie("lat", latitud, 14);
     //setCookie("lon", longitud, 14);
-    Tools.createCookie("lat", longitude, 1);
-    Tools.createCookie("lon", longitude, 1);
+    Tools.createCookie("lat", latitude, 1);
+    Tools.createCookie("lng", longitude, 1);
 }
 
 function refrescarUbicacion() {

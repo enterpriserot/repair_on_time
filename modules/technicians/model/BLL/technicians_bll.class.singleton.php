@@ -34,4 +34,8 @@ class technicians_bll {
     public function select_near_bll($arrArgument){
         return $this->dao->select_near_dao($this->db, $arrArgument);
     }
+
+    public function count_near_bll($arrArgument){
+        return $this->dao->count_near_dao($this->db, $arrArgument);
+    }
 }

@@ -53,7 +53,7 @@ class technicians_dao {
                 $sql.=" AND ";
             $sql .= $arrArgument['column'][$j] . " like '" . $arrArgument['like'][$j] . "'";
         }
-
+        
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }
@@ -94,10 +94,10 @@ class technicians_dao {
 
       $lat = $arrArgument['latitude'];//38.821991;
       $lng = $arrArgument['longitude'];//-0.601544;
-      $distance = $arrArgument['distance'];//10;
+      $distance = 10;//$arrArgument['distance'];
       $box = getBoundaries($lat, $lng, $distance);
-      // echo json_encode($box);
-      // exit;
+      echo json_encode($box);
+      exit;
 
       $sql= ('SELECT *, (6371 * ACOS(
                                     SIN(RADIANS(latitude))
@@ -116,6 +116,37 @@ class technicians_dao {
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }
+
+    public function count_near_dao($db, $arrArgument){
+
+      $lat = $arrArgument['latitude'];//38.821991;
+      $lng = $arrArgument['longitude'];//-0.601544;
+      $distance = 10;//$arrArgument['distance'];
+      $box = getBoundaries($lat, $lng, $distance);
+      // echo json_encode($box);
+      // exit;
+
+      $sql= ('SELECT count(*) as total, (6371 * ACOS(
+                                    SIN(RADIANS(latitude))
+                                    * SIN(RADIANS(' . $lat . '))
+                                    + COS(RADIANS(longitude - ' . $lng . '))
+                                    * COS(RADIANS(latitude))
+                                    * COS(RADIANS(' . $lat . '))
+                                    )
+                          ) AS distance
+               FROM technicians
+               WHERE (latitude BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
+               AND (longitude BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
+               GROUP BY distance
+               HAVING distance  < ' . $distance
+             );
+
+        $stmt = $db->ejecutar($sql);
+        echo json_encode($stmt[0]['total']);
+        exit;
+        return $db->listar($stmt);
+    }
+
 
     public function update_dao($db, $arrArgument) {
         /*

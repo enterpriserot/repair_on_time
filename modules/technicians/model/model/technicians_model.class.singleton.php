@@ -38,4 +38,8 @@ class technicians_model {
     public function select_near($arrArgument) {
         return $this->bll->select_near_bll($arrArgument);
     }
+
+    public function count_near($arrArgument) {
+        return $this->bll->count_near_bll($arrArgument);
+    }
 }

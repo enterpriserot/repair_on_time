@@ -7,17 +7,16 @@ $(document).ready(initialize);
             var place = autocomplete.getPlace();
             var lat = place.geometry.location.lat();
             var lng = place.geometry.location.lng();
-            var data = {"lat": lat, "lng": lng};
+            // var data = {"lat": lat, "lng": lng};
 
-           console.log(place);
-           console.log(location);
+            Tools.createCookie("lat", lat, 1);
+            Tools.createCookie("lng", lng, 1);
 
         });
         $('#searchButton').click( function(){
-          console.log("search");
           // $.post(amigable("?module=technicians&function=begin"), {localtion: location});
-          console.log("?module=technicians&function=begin&location="+data);
-          window.location.href = amigable("?module=technicians&function=begin&location="+location);
+
+          window.location.href = amigable("?module=technicians&function=begin");
         });
     }
 
