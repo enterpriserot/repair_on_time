@@ -71,6 +71,14 @@ $(document).ready(function () {
             $('.dropdown-notification').removeClass('active');
             $("#alertbanner").removeClass('drop-notif-green');
           }, 10000);
+        }else if (url[6] === '0'){
+          $("#alertbanner").html("<a href='#alertbanner' class='alertbanner'>No hay tecnicos cercanos a la ubicacion seleccionada</div>");
+          $("#alertbanner").addClass('active');
+          $("#alertbanner").addClass('drop-notif-green');
+          setTimeout(function(){
+            $('.dropdown-notification').removeClass('active');
+            $("#alertbanner").removeClass('drop-notif-green');
+          }, 10000);
         }
     } else if (url[5] === 'profile'){
         if (url[6] === 'done'){

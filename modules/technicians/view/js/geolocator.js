@@ -1,20 +1,35 @@
 $(document).ready(start);
 
 function start() {
+    var data;
+    var change_JSON;
+  // console.log(navigator.geolocation.getCurrentPosition(mostrarUbicacion));
     lat = Tools.readCookie("lat");
     lng = Tools.readCookie("lng");
-    if (lat && lng) {
-      var data = {"lat": lat, "lng": lng};
-      var change_JSON = JSON.stringify(data);
+    if (!lat && !lng) {
+      console.log('lat');
+      if (navigator.geolocation) {
+        // console.log(navigator.geolocation.getCurrentPosition(mostrarUbicacion));
+          navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+          lat = Tools.readCookie("lat");
+          lng = Tools.readCookie("lng");
+      } else {
+          alert("¡Error! Este navegador no soporta la Geolocalización.");
+      }
+      // console.log(change_JSON);
     }
+    data = {"lat": lat, "lng": lng};
+    change_JSON = JSON.stringify(data);
+    console.log(change_JSON);
 
     // console.log(amigable("?module=technicians&function=maploader"));
     $.post(amigable("?module=technicians&function=maploader"), {value: change_JSON},
 
     function (response) {
       console.log(response);
-        console.log(response.technicians);
+        // console.log(response.technicians);
         if (response.success) {
+          console.log('hola');
             // if (navigator.geolocation) {
             //     navigator.geolocation.getCurrentPosition(mostrarUbicacion);
                 loadmap(response.technicians);
@@ -23,8 +38,11 @@ function start() {
             //     alert("¡Error! Este navegador no soporta la Geolocalización.");
             // }
         } else {
-            if (response.error == 503)
+            if (response.error === 503)
                 window.location.href = amigable("?module=main&fn=begin&param=503");
+
+            if(response.error === 0)
+                window.location.href = amigable("?module=main&fn=begin&param=0");
         }
     }, "json").fail(function (xhr, textStatus, errorThrown) {
         // console.log(xhr.responseText);
@@ -48,6 +66,7 @@ function start() {
 }
 
 function mostrarUbicacion(position) {
+  console.log("mostrar");
     var times = position.timestamp;
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;

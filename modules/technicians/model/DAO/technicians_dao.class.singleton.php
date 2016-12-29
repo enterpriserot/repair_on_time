@@ -53,7 +53,7 @@ class technicians_dao {
                 $sql.=" AND ";
             $sql .= $arrArgument['column'][$j] . " like '" . $arrArgument['like'][$j] . "'";
         }
-        
+
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }
@@ -96,8 +96,8 @@ class technicians_dao {
       $lng = $arrArgument['longitude'];//-0.601544;
       $distance = 10;//$arrArgument['distance'];
       $box = getBoundaries($lat, $lng, $distance);
-      echo json_encode($box);
-      exit;
+      // echo json_encode($box);
+      // exit;
 
       $sql= ('SELECT *, (6371 * ACOS(
                                     SIN(RADIANS(latitude))
@@ -126,24 +126,22 @@ class technicians_dao {
       // echo json_encode($box);
       // exit;
 
-      $sql= ('SELECT count(*) as total, (6371 * ACOS(
-                                    SIN(RADIANS(latitude))
-                                    * SIN(RADIANS(' . $lat . '))
-                                    + COS(RADIANS(longitude - ' . $lng . '))
-                                    * COS(RADIANS(latitude))
-                                    * COS(RADIANS(' . $lat . '))
-                                    )
-                          ) AS distance
+      $sql= ('SELECT COUNT(*) as total
                FROM technicians
                WHERE (latitude BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
                AND (longitude BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
-               GROUP BY distance
-               HAVING distance  < ' . $distance
+               AND (6371 * ACOS(             SIN(RADIANS(latitude))
+                                             * SIN(RADIANS(' . $lat . '))
+                                             + COS(RADIANS(longitude - ' . $lng . '))
+                                             * COS(RADIANS(latitude))
+                                             * COS(RADIANS(' . $lat . '))
+                                             )
+                                   ) <'.$distance
              );
 
         $stmt = $db->ejecutar($sql);
-        echo json_encode($stmt[0]['total']);
-        exit;
+        // echo json_encode($stmt[0]);
+        // exit;
         return $db->listar($stmt);
     }
 
