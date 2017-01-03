@@ -6,67 +6,90 @@ function start() {
   // console.log(navigator.geolocation.getCurrentPosition(mostrarUbicacion));
     lat = Tools.readCookie("lat");
     lng = Tools.readCookie("lng");
-    if (!lat && !lng) {
-      console.log('lat');
-      if (navigator.geolocation) {
-        // console.log(navigator.geolocation.getCurrentPosition(mostrarUbicacion));
-          navigator.geolocation.getCurrentPosition(mostrarUbicacion);
-          lat = Tools.readCookie("lat");
-          lng = Tools.readCookie("lng");
-      } else {
-          alert("¡Error! Este navegador no soporta la Geolocalización.");
-      }
-      // console.log(change_JSON);
+    if (lat && lng) {
+      data = {"lat": lat, "lng": lng};
+      change_JSON = JSON.stringify(data);
+
+      $.post(amigable("?module=technicians&function=maploader"), {value: change_JSON},
+
+      function (response) {
+        console.log(response);
+          // console.log(response.technicians);
+          if (response.success) {
+                  loadmap(response.technicians);
+                  loadtechnicians(response.technicians);
+          } else {
+              if (response.error === 503)
+                  window.location.href = amigable("?module=main&fn=begin&param=503");
+
+              if(response.error === 0)
+                  window.location.href = amigable("?module=main&fn=begin&param=0");
+          }
+      }, "json").fail(function (xhr, textStatus, errorThrown) {
+          // console.log(xhr.responseText);
+          if (xhr.status === 0) {
+              alert('Not connect: Verify Network.');
+          } else if (xhr.status === 404) {
+              alert('Requested page not found [404]');
+          } else if (xhr.status === 500) {
+              alert('Internal Server Error [500].');
+          } else if (textStatus === 'parsererror') {
+              alert('Requested JSON parse failed.');
+          } else if (textStatus === 'timeout') {
+              alert('Time out error.');
+          } else if (textStatus === 'abort') {
+              alert('Ajax request aborted.');
+          } else {
+              alert('Uncaught Error: ' + xhr.responseText);
+          }
+      });
+
+
+    } else {
+      console.log("hola2");
+      $.post(amigable("?module=technicians&function=maploader"), {geo: {send: true}},
+
+      function (response) {
+        console.log(response);
+          // console.log(response.technicians);
+          if (response.success) {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+                  loadmap(response.technicians);
+                  loadtechnicians(response.technicians);
+              } else {
+                  alert("¡Error! Este navegador no soporta la Geolocalización.");
+              }
+          } else {
+              if (response.error === 503)
+                  window.location.href = amigable("?module=main&fn=begin&param=503");
+
+              if(response.error === 0)
+                  window.location.href = amigable("?module=main&fn=begin&param=0");
+          }
+      }, "json").fail(function (xhr, textStatus, errorThrown) {
+          // console.log(xhr.responseText);
+          if (xhr.status === 0) {
+              alert('Not connect: Verify Network.');
+          } else if (xhr.status === 404) {
+              alert('Requested page not found [404]');
+          } else if (xhr.status === 500) {
+              alert('Internal Server Error [500].');
+          } else if (textStatus === 'parsererror') {
+              alert('Requested JSON parse failed.');
+          } else if (textStatus === 'timeout') {
+              alert('Time out error.');
+          } else if (textStatus === 'abort') {
+              alert('Ajax request aborted.');
+          } else {
+              alert('Uncaught Error: ' + xhr.responseText);
+          }
+      });
     }
-    data = {"lat": lat, "lng": lng};
-    change_JSON = JSON.stringify(data);
-    console.log(change_JSON);
-
-    // console.log(amigable("?module=technicians&function=maploader"));
-    $.post(amigable("?module=technicians&function=maploader"), {value: change_JSON},
-
-    function (response) {
-      console.log(response);
-        // console.log(response.technicians);
-        if (response.success) {
-          console.log('hola');
-            // if (navigator.geolocation) {
-            //     navigator.geolocation.getCurrentPosition(mostrarUbicacion);
-                loadmap(response.technicians);
-                loadtechnicians(response.technicians);
-            // } else {
-            //     alert("¡Error! Este navegador no soporta la Geolocalización.");
-            // }
-        } else {
-            if (response.error === 503)
-                window.location.href = amigable("?module=main&fn=begin&param=503");
-
-            if(response.error === 0)
-                window.location.href = amigable("?module=main&fn=begin&param=0");
-        }
-    }, "json").fail(function (xhr, textStatus, errorThrown) {
-        // console.log(xhr.responseText);
-        if (xhr.status === 0) {
-            alert('Not connect: Verify Network.');
-        } else if (xhr.status === 404) {
-            alert('Requested page not found [404]');
-        } else if (xhr.status === 500) {
-            alert('Internal Server Error [500].');
-        } else if (textStatus === 'parsererror') {
-            alert('Requested JSON parse failed.');
-        } else if (textStatus === 'timeout') {
-            alert('Time out error.');
-        } else if (textStatus === 'abort') {
-            alert('Ajax request aborted.');
-        } else {
-            alert('Uncaught Error: ' + xhr.responseText);
-        }
-    });
 
 }
 
 function mostrarUbicacion(position) {
-  console.log("mostrar");
     var times = position.timestamp;
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
@@ -77,6 +100,7 @@ function mostrarUbicacion(position) {
     //setCookie("lon", longitud, 14);
     Tools.createCookie("lat", latitude, 1);
     Tools.createCookie("lng", longitude, 1);
+
 }
 
 function refrescarUbicacion() {
