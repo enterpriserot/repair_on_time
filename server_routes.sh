@@ -11,6 +11,7 @@ replace "}else if(url[6]==='503'){" "}else if(url[5]==='503'){" -- ./modules/use
 replace "}else if (url[5] === 'begin') {" "}else if (url[4] === 'begin') {" -- ./modules/users/view/js/init.js
 replace "if (url[6] === 'reg'){" "if (url[5] === 'reg'){" -- ./modules/users/view/js/init.js
 replace "}else if (url[6] === 'rest'){" "}else if (url[5] === 'rest'){" -- ./modules/users/view/js/init.js
+replace "}else if (url[6] === '0'){" "}else if (url[5] === '0'){" -- ./modules/users/view/js/init.js
 replace "} else if (url[5] === 'profile'){" "} else if (url[4] === 'profile'){" -- ./modules/users/view/js/init.js
 replace "if (url[6] === 'done')" "if (url[5] === 'done')" -- ./modules/users/view/js/init.js
 replace "token[6]" "token[5]" -- ./modules/users/view/js/changepass.js
