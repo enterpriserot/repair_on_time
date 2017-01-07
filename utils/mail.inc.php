@@ -22,7 +22,7 @@
 
             case 'contact':
                 $subject = 'Your question has been sent<br>';
-                $ruta = '<a href=' . 'http://arevert.tk/repair_on_time'. '>here</a>';
+                $ruta = '<a href=' . 'https://repairontime.tk' . '>here</a>';
                 $body = 'To visit our web, click ' . $ruta;
                 break;
 
